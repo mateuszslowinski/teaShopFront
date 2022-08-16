@@ -4,7 +4,6 @@ const desktopSize = {
     sm: 768,
     md: 1024,
     lg: 1200,
-    xl: 1700,
 }
 
 export const screenSize = {
@@ -13,5 +12,4 @@ export const screenSize = {
     sm: `@media (min-width: ${desktopSize.sm}px)`,
     md: `@media (min-width: ${desktopSize.md}px)`,
     lg: `@media (min-width: ${desktopSize.lg}px)`,
-    xl: `@media (min-width: ${desktopSize.xl}px)`,
 }
