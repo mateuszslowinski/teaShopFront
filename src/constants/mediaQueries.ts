@@ -1,6 +1,6 @@
 const desktopSize = {
     xs: 360,
-    ss: 620,
+    ss: 414,
     sm: 768,
     md: 1024,
     lg: 1200,
