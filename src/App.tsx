@@ -1,15 +1,14 @@
 import React from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {Home} from './pages/Home';
 
 
 export const App = () => (
-    <div className="App">
-        <div>navbar</div>
-        <div>header</div>
-        <div>main</div>
-        <div>email</div>
-        <div>footer</div>
-
-    </div>
+    <BrowserRouter>
+        <Routes>
+            <Route path='/' element={<Home/>}/>
+        </Routes>
+    </BrowserRouter>
 );
 
 
