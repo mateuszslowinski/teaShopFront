@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { appColoros } from "./constants/appColoros";
+import {createGlobalStyle} from "styled-components";
+import {appColors} from "./constants/appColoros";
 
 
 export const GlobalStyles = createGlobalStyle`
@@ -10,9 +10,9 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Catamaran', sans-serif;
     font-size: 10px;
-      background-color: ${appColoros.backgroundColor};
+    background-color: ${appColors.pageBackgroundColor};
   }
-  
+
   #root {
     margin: 0 auto;
   }
