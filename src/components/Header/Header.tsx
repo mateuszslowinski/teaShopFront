@@ -1,6 +1,6 @@
 import React from "react";
 import {BasketIcon, HeaderContainer, LinkMenu} from "./Header.style";
-import {Button} from "../../Commons/Button/Button";
+import {Button} from "../../commons/Button/Button";
 import {RowContainer} from "../../constants/Layouts/FlexDirection.styles";
 
 
