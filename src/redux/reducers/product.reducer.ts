@@ -3,7 +3,7 @@ import {
     ActionForProducts,
     ProductConstantsAction, ProductDetailsConstantsAction
 } from "../constatns/product.constants";
-import {ProductTypes} from "../../types/product.types";
+import {ProductInterface, ProductTypes} from "../../types/product.types";
 
 interface ProductListState {
     products: ProductTypes[] | [],
@@ -44,13 +44,13 @@ export const productListReducer = (state: ProductListState = initialStateForProd
 // ONE PRODUCT DETAIL
 
 interface DetailsProductState {
-    product: ProductTypes | null,
+    product?: ProductInterface | []
     loading: boolean
     error?: string
 }
 
 const initialStateForOneProduct: DetailsProductState = {
-    product: null,
+    product:[],
     loading: true,
 }
 
@@ -59,8 +59,8 @@ export const productDetailReducer = (state: DetailsProductState = initialStateFo
     switch (action.type) {
         case ProductDetailsConstantsAction.PRODUCT_DETAILS_REQUEST:
             return {
+                product:[],
                 loading: true,
-                product: [],
             };
         case ProductDetailsConstantsAction.PRODUCT_DETAILS_SUCCESS:
             return {
