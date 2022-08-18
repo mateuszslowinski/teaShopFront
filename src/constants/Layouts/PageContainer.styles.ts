@@ -8,7 +8,7 @@ export const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   max-width: 1200px;
-  margin: 30px auto;
+  margin: 10px auto;
   color: ${appColors.secondary};
   background-color: ${appColors.backColor};
 

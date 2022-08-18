@@ -1,12 +1,9 @@
 import React from "react";
 import {BasketIcon, HeaderContainer, LinkMenu} from "./Header.style";
-
 import {RowContainer} from "../../constants/Layouts/FlexDirection.styles";
 import {Button} from "../../Commons/Button/Button";
 
-
 export const Header = () => (
-
     <HeaderContainer>
         <ul>
             <li>
