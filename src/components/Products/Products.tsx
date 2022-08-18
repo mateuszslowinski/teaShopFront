@@ -1,15 +1,13 @@
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
-
+import {getListProducts} from "../../redux/actions/product.actions";
+import {ProductCard} from './SingleProductCard/SingleProductCard';
 import {ProductTypes} from "../../types/product.types";
 import {ProductsSectionContainer} from './Products.styles';
-import {ProductCard} from './SingleProductCard/SingleProductCard';
-import {getListProducts} from "../../redux/actions/product.actions";
 
 
 export const Products = () => {
-
 
     const dispatch = useDispatch()
     const {loading, error, products} = useSelector((store: RootState) => store.productList)
@@ -30,13 +28,11 @@ export const Products = () => {
                     : (
                         <>
                             {products.map((product: ProductTypes) => (
-                                <ProductCard key={product.name} {...product}/>
+                                <ProductCard key={product.name} product={product}/>
                             ))}
                         </>
                     )
             }
-
-
         </ProductsSectionContainer>
     )
 }
