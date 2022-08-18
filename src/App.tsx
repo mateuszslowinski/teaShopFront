@@ -2,32 +2,34 @@ import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {Home} from './pages/Home';
 import {ProductsPage} from "./pages/Products.page";
-import {SingleProductsPage} from "./pages/SingleProductsPage";
+import {SingleProductsPage} from "./pages/SingleProducts.page";
 import {Layout} from "./components/Layout/Layout";
-import { Header } from './components/Header/Header';
+import {Header} from './components/Header/Header';
+import {CartPage} from "./pages/Cart.page";
 
 
-export const App = () =>{
+export const App = () => {
 
-    const header=<Header/>
-    const footer= (<div>footer</div>)
-    const content=(
+    const header = <Header/>
+    const footer = (<div>footer</div>)
+    const content = (
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/produkty' element={<ProductsPage/>}/>
             <Route path='/produkty/:id' element={<SingleProductsPage/>}/>
+            <Route path="/cart" element={<CartPage/>}/>
         </Routes>
     )
 
-return (
-    <BrowserRouter>
-       <Layout
-           header={header}
-           content={content}
-           footer={footer}
+    return (
+        <BrowserRouter>
+            <Layout
+                header={header}
+                content={content}
+                footer={footer}
 
-       />
-    </BrowserRouter>
-);
+            />
+        </BrowserRouter>
+    );
 }
 
