@@ -18,7 +18,7 @@ export const ProductCard = ({product}: Props) => {
     const navigate = useNavigate();
 
     const handleGoToDetailsClick = () => {
-        navigate(`/produkt/${_id}`)
+        navigate(`/produkty/${_id}`)
     }
 
     const handleGoToCategoryPageClick = () => {
