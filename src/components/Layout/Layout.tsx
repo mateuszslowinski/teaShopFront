@@ -1,9 +1,10 @@
+import { ReactNode } from "react"
 import { PageContainer } from "../../constants/Layouts/PageContainer.styles"
 
 interface Props {
-    header: any
-    content: any
-    footer: any
+    header: ReactNode
+    content: ReactNode
+    footer: ReactNode
 }
 
 export const Layout = ({header, content, footer}: Props) => (
