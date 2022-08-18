@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import styled from "styled-components";
 import {appColors} from "../../constants/appColoros";
 import {ColumnContainer} from "../../constants/Layouts/FlexDirection.styles";
@@ -11,7 +11,7 @@ export const HeaderContainer = styled(ColumnContainer)`
   background-color: ${appColors.dimBlue};
   border-radius: 10px;
   padding: 5px;
-  margin: 20px;
+  margin: 20px auto 0;
   
   ${screenSize.sm} {
     flex-direction: row;
@@ -37,7 +37,6 @@ export const HeaderContainer = styled(ColumnContainer)`
   & div {
     margin: 5px;
     background-color: transparent;
-
   }
 
   & label {
@@ -53,9 +52,8 @@ export const HeaderContainer = styled(ColumnContainer)`
     font-size: 1.6rem;
     background-color: ${appColors.secondary};
   }
-
 `
-export const LinkMenu = styled(Link)`
+export const LinkMenu = styled(NavLink)`
   background-color: transparent;
   color: ${appColors.primary};
   font-size: 1.6rem;
@@ -68,7 +66,6 @@ export const LinkMenu = styled(Link)`
     border-bottom: 1px solid ${appColors.electricRed};
   }
 `
-
 
 export const BasketIcon = styled(FaShoppingBag)`
   margin-left: 5px;

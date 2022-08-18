@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import {appColors} from "../../../constants/appColoros";
 import {ColumnContainer, RowContainer} from "../../../constants/Layouts/FlexDirection.styles";
@@ -16,15 +17,7 @@ export const ProductCardContainer = styled(ColumnContainer)`
     font-size: 1.6rem;
     margin: 5px;
   }
-
-  & h4 {
-    align-self: flex-start;
-    font-size: 1.3rem;
-    background-color: transparent;
-    margin: 0 0 5px 5px;
-    cursor: pointer;
-  }
-
+  
   & div {
     align-self: self-start;
     display: flex;
@@ -71,4 +64,13 @@ export const ImgProduct = styled.img`
     width: 220px;
     height: 160px;
   }
+`
+export const NavLinkCon = styled(NavLink)`
+  background-color: transparent;
+  align-self: flex-start;
+  color: ${appColors.primary};
+  font-size: 1.3rem;
+  text-decoration: none;
+  margin: 0 0 5px 5px;
+
 `
