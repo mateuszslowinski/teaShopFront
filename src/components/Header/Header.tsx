@@ -13,7 +13,7 @@ export const Header = () => (
                 <LinkMenu to="/">Strona główna</LinkMenu>
             </li>
             <li>
-                <LinkMenu to="#">Produkty</LinkMenu>
+                <LinkMenu to="produkty">Produkty</LinkMenu>
             </li>
         </ul>
         <div>
