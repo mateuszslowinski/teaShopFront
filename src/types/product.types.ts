@@ -1,5 +1,6 @@
 
 export interface ProductInterface{
+    _id:string
     name: string,
     image: string,
     category: string,
@@ -12,6 +13,7 @@ export interface ProductInterface{
 }
 
 export type ProductTypes = {
+    _id:string
     name: string,
     image: string,
     category: string,
