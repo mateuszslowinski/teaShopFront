@@ -1,5 +1,7 @@
 import React from "react";
-import {PrimaryButton} from "./Button.style";
+// @ts-ignore
+import {PrimaryButton} from './Button.styles';
+
 
 interface Props {
     text: string
