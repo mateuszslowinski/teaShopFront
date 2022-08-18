@@ -4,9 +4,10 @@ import {PrimaryButton} from './Button.styles';
 
 interface Props {
     text: string
+    onClick?: (arg:any) => void
 }
 
 
-export const Button = ({text}: Props) => (
-    <PrimaryButton>{text}</PrimaryButton>
+export const Button = ({text, onClick}: Props) => (
+    <PrimaryButton onClick={onClick}>{text}</PrimaryButton>
 )
