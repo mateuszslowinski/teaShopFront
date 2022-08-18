@@ -8,6 +8,7 @@ export const ProductsSectionContainer = styled(RowContainer)`
     & h1 {
       width: 100%;
       text-align: center;
+      margin-top: 20px;
       font-size: 2.5rem;
       background-color: transparent;
       color: ${appColors.primary};
