@@ -1,7 +1,7 @@
 import React from 'react'
 import StarRatings from "react-star-ratings";
 import {Button} from '../../../Commons/Button/Button';
-import img from '../../../assets/tea-bag-1324303.jpg'
+import img from '../../../assets/1.png'
 import {ImgProduct, NavLinkCon, ProductCardContainer, RatingRowContainer} from "./SingleProductCard.styles";
 import {appColors} from "../../../constants/appColoros";
 import {ProductTypes} from "../../../types/product.types";

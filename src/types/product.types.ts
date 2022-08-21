@@ -1,5 +1,5 @@
 
-export interface ProductInterface{
+export type ProductTypes = {
     _id:string
     name: string,
     image: string,
@@ -12,15 +12,13 @@ export interface ProductInterface{
     countInStock: number
 }
 
-export type ProductTypes = {
+export type SingleProductCartTypes ={
     _id:string
     name: string,
     image: string,
     category: string,
-    description: string,
-    reviews: {},
-    rating: number,
-    numReviews: number,
     price: number,
+    quantity:number,
     countInStock: number
+
 }

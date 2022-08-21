@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { ProductTypes } from '../../types/product.types';
+import React, {useState} from 'react'
+import {ProductTypes} from '../../types/product.types';
 import {DetailsContainer, ImgProduct, ProductDetailsContainer, RowDetails, StockDetails} from "./SingleProducts.styles";
-import img from '../../assets/tea-bag-1324303.jpg'
-import { useNavigate, useParams } from 'react-router';
-import { Button } from '../../Commons/Button/Button';
+import img from '../../assets/1.png'
+import {useParams} from 'react-router';
+import {Button} from '../../Commons/Button/Button';
+import {NavLink} from "react-router-dom";
 
 interface Props {
     product: ProductTypes
@@ -12,17 +13,10 @@ interface Props {
 }
 
 
-export const SingleProducts =  ({product, error, loading}: Props) => {
+export const SingleProducts = ({product, error, loading}: Props) => {
 
     const [quantity, setQuantity] = useState<number>(1);
-    const navigate = useNavigate()
     const {id} = useParams()
-
-    const handleAddProduct = () => {
-        console.log('klik')
-        navigate(`/koszyk/${id}?qty=${quantity}`)
-    };
-
 
     if (product === undefined) return <p>Error.. {error}</p>
     return (
@@ -48,7 +42,7 @@ export const SingleProducts =  ({product, error, loading}: Props) => {
                                     <>
                                         <span>Dostępne</span>
                                         <span>Ilość:</span>
-                                        <select>
+                                        <select value={quantity} onChange={(e) => setQuantity(Number(e.target.value))}>
                                             {Array.from({length: product.countInStock}, (_, i) => i + 1).map((count: number) => (
                                                 <option
                                                     key={count}
@@ -57,7 +51,7 @@ export const SingleProducts =  ({product, error, loading}: Props) => {
                                                 </option>)
                                             )}
                                         </select>
-                                        <Button text="dodaj do koszyka" onClick={handleAddProduct}/>
+                                        <NavLink to={`/koszyk/${id}?qty=${quantity}`}><Button text="dodaj do koszyka"/></NavLink>
                                     </>
                                 ) : (
                                     <span>Brak w sklepie</span>

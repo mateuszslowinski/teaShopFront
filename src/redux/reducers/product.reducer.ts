@@ -16,6 +16,7 @@ const initialStateForProductsList: ProductListState = {
     loading: true,
 }
 
+
 // PRODUCT LIST
 export const productListReducer = (state: ProductListState = initialStateForProductsList, action: ActionForProducts) => {
     switch (action.type) {
