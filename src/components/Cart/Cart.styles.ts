@@ -114,5 +114,9 @@ export const Order = styled(ColumnContainer)`
     font-size: 1.4rem;
   }
 
- 
+ & a {
+   width: 100%;
+   text-align: center;
+   background-color: transparent;
+ }
 `

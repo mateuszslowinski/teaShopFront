@@ -1,56 +1,97 @@
-import React from "react";
+// @ts-nocheck
+import React, {useEffect} from "react";
 import {CartContainer, DetailsProduct, DetailsProductContainer, ImgProduct, Order} from "./Cart.styles";
 import {Button} from "../../Commons/Button/Button";
-import img from '../../assets/tea-bag-1324303.jpg'
+import img from '../../assets/1.png'
+import {useParams} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {addToCart, removeFromCart} from "../../redux/actions/cart.actions";
+import {RootState} from "../../redux/store";
+import {NavLink} from "react-router-dom";
 
+const DELIVER_PRICE = 7.99;
 
 export const Cart = () => {
+    const {id} = useParams();
+    const dispatch = useDispatch();
+
+    const quantity = window.location.search ? Number(window.location.search.split('=')[1]) : 1
+    const cart = useSelector((store: RootState) => store.cart)
+
+    const {cartItems} = cart;
+    const totalProductPrice = cartItems.reduce((prev, curr) => prev + curr.quantity * curr.price, 0).toFixed(2);
+    const totalPrice = (Number(totalProductPrice) + DELIVER_PRICE).toFixed(2);
+
+
+    const removeItemFromBasket = (id:string) => {
+         dispatch(removeFromCart(id))
+    }
+
+    useEffect(() => {
+        if (id) {
+            dispatch(addToCart(id, quantity))
+        }
+    }, [dispatch, id, quantity])
+
+
     return (
-        <CartContainer>
-            <DetailsProductContainer>
-                <h3>Koszyk (1 art.)</h3>
-                <div>
-                    <p>wyslyka</p>
-                    <p>7.90 PLN</p>
-                </div>
-                <DetailsProduct>
-                    <div>
-                        <ImgProduct
-                            src={img}
-                            alt="product"/>
-                        <span>
-                        <p>Nazwa produktu</p>
-                        <p>herbata zielona</p>
-                        </span>
-                        <select>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </div>
-                    <div>
-                        <Button text='Usuń'/>
-                        <p>120.22 PLN</p>
-                    </div>
-                </DetailsProduct>
-
-
-            </DetailsProductContainer>
-            <Order>
-                <h3>Do zapłaty</h3>
-                <div>
-                    <span>Wartość produtków:</span>
-                    <p>23.45 PLN</p>
-                </div>
-                <div>
-                    <span>Przysyłka: </span>
-                    <p>6.70 PLN</p>
-                </div>
-                <div>
-                    <h4>Wartość do zapłaty: </h4>
-                    <p>67.99 PLN</p>
-                </div>
-                <Button text='Przejdź do kasy'/>
-            </Order>
-        </CartContainer>
+        cartItems.length === 0 ?
+            (
+                <div>Brak Produktów w koszyku</div>
+            ) : (
+                <CartContainer>
+                    <DetailsProductContainer>
+                        <h3>Koszyk ({cartItems.length} artykuły)</h3>
+                        <div>
+                            <p>wyslyka</p>
+                            <p>{DELIVER_PRICE} PLN</p>
+                        </div>
+                        {cartItems.map(product => (
+                            <DetailsProduct key={product._id}>
+                                <div>
+                                    <ImgProduct
+                                        src={img}
+                                        alt={product.name}/>
+                                    <span>
+                                       <p>{product.name}</p>
+                                         <p>{product.category}</p>
+                                         </span>
+                                    <select value={product.quantity}
+                                            onChange={(e) => dispatch(addToCart(product._id, Number(e.target.value)))}>
+                                        {Array.from({length: product.countInStock}, (_, i) => i + 1).map((count: number) => (
+                                            <option
+                                                key={count}
+                                                value={count}>
+                                                {count}
+                                            </option>)
+                                        )}
+                                    </select>
+                                </div>
+                                <div>
+                                    <Button text='Usuń' onClick={() => removeItemFromBasket(product._id)}/>
+                                    <p>{(product.quantity * product.price).toFixed(2)} PLN</p>
+                                </div>
+                            </DetailsProduct>
+                        ))}
+                    </DetailsProductContainer>
+                    <Order>
+                        <h3>Do zapłaty</h3>
+                        <div>
+                            <span>Wartość produtków:</span>
+                            <p>{totalProductPrice} PLN</p>
+                        </div>
+                        <div>
+                            <span>Przysyłka: </span>
+                            <p>{DELIVER_PRICE} PLN</p>
+                        </div>
+                        <div>
+                            <h4>Wartość do zapłaty: </h4>
+                            <p>{totalPrice} PLN</p>
+                        </div>
+                        <Button text='Przejdź do kasy'/>
+                        <NavLink to='/produkty'><Button text="Wróc do zakupów"/></NavLink>
+                    </Order>
+                </CartContainer>
+            )
     )
 }
