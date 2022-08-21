@@ -52,8 +52,10 @@ export const RowDetails = styled(RowContainer)`
   align-self: flex-start;
   width: 100%;
   gap: 10px;
+  & a {
+    background-color: transparent;
+  }
 `
-
 
 export const StockDetails = styled(ColumnContainer)`
   align-self: center;
@@ -82,6 +84,6 @@ export const StockDetails = styled(ColumnContainer)`
     align-self: flex-end;
     justify-self: center;
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
   }
 `
