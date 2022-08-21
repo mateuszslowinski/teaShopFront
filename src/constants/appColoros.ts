@@ -7,5 +7,6 @@ export const appColors = {
     pageBackgroundColor: "#ccc",
     backColor: "#e8f9fd",
     electricRed: "#E02735",
-
+    brutalBlue: "#0049B7",
+    deepGreen: "#657a00",
 }
