@@ -5,6 +5,7 @@ import {getListProducts} from "../../redux/actions/product.actions";
 import {ProductCard} from './SingleProductCard/SingleProductCard';
 import {ProductTypes} from "../../types/product.types";
 import {ProductsSectionContainer} from './Products.styles';
+import {LoadingSpinner} from "../../Commons/LoadingSpinner/LoadingSpinner";
 
 
 export const Products = () => {
@@ -22,7 +23,7 @@ export const Products = () => {
         <ProductsSectionContainer>
             <h1>Nasze produkty:</h1>
             {loading
-                ? <p>Spinner</p>
+                ? <LoadingSpinner/>
                 : error
                     ? <p>Error: {error}</p>
                     : (
