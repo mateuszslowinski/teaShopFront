@@ -5,6 +5,7 @@ import img from '../../assets/1.png'
 import {useParams} from 'react-router';
 import {Button} from '../../Commons/Button/Button';
 import {NavLink} from "react-router-dom";
+import {LoadingSpinner} from "../../Commons/LoadingSpinner/LoadingSpinner";
 
 interface Props {
     product: ProductTypes
@@ -22,7 +23,7 @@ export const SingleProducts = ({product, error, loading}: Props) => {
     return (
         <ProductDetailsContainer>
             {loading ? (
-                <p>Wczytywanie...</p>
+                <LoadingSpinner/>
             ) : (
                 <>
                     <ImgProduct
