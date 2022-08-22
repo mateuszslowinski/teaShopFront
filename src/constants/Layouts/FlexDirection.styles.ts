@@ -7,6 +7,9 @@ export const RowContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   background-color: transparent;
+  & a{
+    background-color: transparent;
+  }
 `
 
 export const ColumnContainer = styled.div`

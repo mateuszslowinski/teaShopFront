@@ -2,6 +2,7 @@ import React from "react";
 import {BasketIcon, HeaderContainer, LinkMenu} from "./Header.style";
 import {RowContainer} from "../../constants/Layouts/FlexDirection.styles";
 import {Button} from "../../Commons/Button/Button";
+import {NavLink} from "react-router-dom";
 
 export const Header = () => (
     <HeaderContainer>
@@ -20,8 +21,8 @@ export const Header = () => (
             </label>
         </div>
         <RowContainer>
-            <Button text="Rejestracja"/>
-            <Button text="Logowanie"/>
+            <NavLink to='/rejestracja'><Button text="Rejestracja"/></NavLink>
+            <NavLink to='/zaloguj'><Button text="Logowanie"/> </NavLink>
             <BasketIcon/>
         </RowContainer>
     </HeaderContainer>
