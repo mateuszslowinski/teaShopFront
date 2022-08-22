@@ -1,15 +1,15 @@
 import axios from "axios";
 import {UserConstantsAction, UserConstantsType} from "../constatns/user.constants";
 
+
+//LOGIN
 interface DispatchInterfaceForLoginUser {
     type: UserConstantsType
     payload?: null
 }
-
 type loginType = (email: string, password: string) => (dispatch: (arg: DispatchInterfaceForLoginUser) => DispatchInterfaceForLoginUser) => Promise<void>
 
-//LOGIN
-export const login:loginType = (email, password) => async (dispatch) => {
+export const login: loginType = (email, password) => async (dispatch) => {
     try {
         dispatch({type: UserConstantsAction.USER_LOGIN_REQUEST});
 
@@ -30,4 +30,14 @@ export const login:loginType = (email, password) => async (dispatch) => {
                 : e.message
         })
     }
+}
+
+//LOGOUT
+interface DispatchInterfaceForLogoutUser {
+    type: UserConstantsType
+}
+type logoutType =  ()=> (dispatch: (arg: DispatchInterfaceForLogoutUser) => DispatchInterfaceForLogoutUser) => void
+
+export const logout:logoutType = () => (dispatch) => {
+    dispatch({type: UserConstantsAction.USER_LOGOUT});
 }
