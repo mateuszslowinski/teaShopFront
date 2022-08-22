@@ -16,7 +16,7 @@ export const Header = () => {
     const handleLogout = () => {
         // @ts-ignore
         dispatch(logout())
-        navigate('/')
+        navigate('/zaloguj')
     }
 
     return (
