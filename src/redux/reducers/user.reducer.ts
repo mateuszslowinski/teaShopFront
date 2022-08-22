@@ -1,6 +1,8 @@
-import {ActionsForUser, UserConstantsAction} from "../constatns/user.constants";
+import {ActionsForLoginUser, UserLoginConstantsAction} from "../constatns/user.constants";
 import {UserLoginResponse} from "../../types/user.type";
 
+
+//LOGIN
 interface UserLoginState {
     userInfo: UserLoginResponse | null,
     loading: boolean
@@ -11,28 +13,28 @@ const initialStateForUserLogin: UserLoginState = {
     userInfo: null,
     loading: true,
 }
+const {USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT} = UserLoginConstantsAction;
 
-//LOGIN
 export const userLoginReducer = (
     state: UserLoginState = initialStateForUserLogin,
-    action: ActionsForUser
+    action: ActionsForLoginUser
 ) => {
     switch (action.type) {
-        case UserConstantsAction.USER_LOGIN_REQUEST:
+        case USER_LOGIN_REQUEST:
             return {
                 loading: true
             }
-        case UserConstantsAction.USER_LOGIN_SUCCESS:
+        case USER_LOGIN_SUCCESS:
             return {
                 loading: false,
                 user: action.payload
             }
-        case UserConstantsAction.USER_LOGIN_FAIL:
+        case USER_LOGIN_FAIL:
             return {
                 loading: false,
                 error: action.payload
             }
-        case UserConstantsAction.USER_LOGOUT:
+        case USER_LOGOUT:
             return {}
 
         default:

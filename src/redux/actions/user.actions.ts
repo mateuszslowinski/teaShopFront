@@ -1,17 +1,19 @@
 import axios from "axios";
-import {UserConstantsAction, UserConstantsType} from "../constatns/user.constants";
+import {UserLoginConstantsAction, UserLoginConstantsType} from "../constatns/user.constants";
 
+const {USER_LOGIN_REQUEST,USER_LOGIN_SUCCESS,USER_LOGIN_FAIL,USER_LOGOUT} = UserLoginConstantsAction
 
 //LOGIN
 interface DispatchInterfaceForLoginUser {
-    type: UserConstantsType
+    type: UserLoginConstantsType
     payload?: null
 }
+
 type loginType = (email: string, password: string) => (dispatch: (arg: DispatchInterfaceForLoginUser) => DispatchInterfaceForLoginUser) => Promise<void>
 
 export const login: loginType = (email, password) => async (dispatch) => {
     try {
-        dispatch({type: UserConstantsAction.USER_LOGIN_REQUEST});
+        dispatch({type: USER_LOGIN_REQUEST});
 
         const config = {
             headers: {
@@ -20,11 +22,11 @@ export const login: loginType = (email, password) => async (dispatch) => {
         };
 
         const {data} = await axios.post('http://localhost:3001/api/users/login', {email, password}, config);
-        dispatch({type: UserConstantsAction.USER_LOGIN_SUCCESS, payload: data})
+        dispatch({type: USER_LOGIN_SUCCESS, payload: data})
 
     } catch (e: any) {
         dispatch({
-            type: UserConstantsAction.USER_LOGIN_FAIL,
+            type: USER_LOGIN_FAIL,
             payload: e.response && e.response.data.message
                 ? e.response.data.message
                 : e.message
@@ -34,10 +36,10 @@ export const login: loginType = (email, password) => async (dispatch) => {
 
 //LOGOUT
 interface DispatchInterfaceForLogoutUser {
-    type: UserConstantsType
+    type: UserLoginConstantsType
 }
 type logoutType =  ()=> (dispatch: (arg: DispatchInterfaceForLogoutUser) => DispatchInterfaceForLogoutUser) => void
 
 export const logout:logoutType = () => (dispatch) => {
-    dispatch({type: UserConstantsAction.USER_LOGOUT});
+    dispatch({type: USER_LOGOUT});
 }
