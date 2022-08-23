@@ -1,5 +1,9 @@
-import axios from "axios";
-import {UserLoginConstantsAction, UserLoginConstantsType} from "../constatns/user.constants";
+import { api } from "../../utils/axios";
+import {
+    UserLoginConstantsAction,
+    UserLoginConstantsType,
+
+} from "../constatns/user.constants";
 
 const {USER_LOGIN_REQUEST,USER_LOGIN_SUCCESS,USER_LOGIN_FAIL,USER_LOGOUT} = UserLoginConstantsAction
 
@@ -21,7 +25,7 @@ export const login: loginType = (email, password) => async (dispatch) => {
             },
         };
 
-        const {data} = await axios.post('http://localhost:3001/api/users/login', {email, password}, config);
+        const {data} = await api.post('/users/login', {email, password}, config);
         dispatch({type: USER_LOGIN_SUCCESS, payload: data})
 
     } catch (e: any) {
@@ -43,3 +47,4 @@ type logoutType =  ()=> (dispatch: (arg: DispatchInterfaceForLogoutUser) => Disp
 export const logout:logoutType = () => (dispatch) => {
     dispatch({type: USER_LOGOUT});
 }
+

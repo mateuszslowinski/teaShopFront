@@ -1,6 +1,8 @@
-import {ActionsForLoginUser, UserLoginConstantsAction} from "../constatns/user.constants";
+import {
+    ActionsForLoginUser,
+    UserLoginConstantsAction,
+} from "../constatns/user.constants";
 import {UserLoginResponse} from "../../types/user.type";
-
 
 //LOGIN
 interface UserLoginState {
@@ -8,7 +10,6 @@ interface UserLoginState {
     loading: boolean
     error?: string
 }
-
 const initialStateForUserLogin: UserLoginState = {
     userInfo: null,
     loading: true,
@@ -41,3 +42,4 @@ export const userLoginReducer = (
             return state
     }
 };
+
