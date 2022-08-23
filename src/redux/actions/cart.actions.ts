@@ -1,4 +1,4 @@
-import axios from "axios";
+import { api } from "../../utils/axios";
 import {CartConstantsAction, CartConstantsActionType} from "../constatns/cart.constants";
 
 
@@ -10,7 +10,7 @@ interface DispatchInterfaceForCart {
 type addForCartType = (id: string, quantity:number) => (dispatch: (arg: DispatchInterfaceForCart) => DispatchInterfaceForCart) => Promise<void>
 
 export const addToCart:addForCartType = (id, quantity) => async dispatch => {
-    const {data} = await axios.get(`http://localhost:3001/api/products/${id}`);
+    const {data} = await api.get(`/products/${id}`);
     dispatch({
         type: CartConstantsAction.CART_ADD_ITEM,
         payload: {

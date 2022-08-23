@@ -6,6 +6,8 @@ import {SingleProductsPage} from "./pages/SingleProducts.page";
 import {Layout} from "./components/Layout/Layout";
 import {Header} from './components/Header/Header';
 import {CartPage} from "./pages/Cart.page";
+import {LoginPage} from "./pages/Login.page";
+import {RegisterPage} from "./pages/Register.page";
 
 
 export const App = () => {
@@ -15,8 +17,11 @@ export const App = () => {
     const content = (
         <Routes>
             <Route path='/' element={<Home/>}/>
+            <Route path='/zaloguj' element={<LoginPage/>}/>
+            <Route path="/rejestracja" element={<RegisterPage/>}/>
             <Route path='/produkty' element={<ProductsPage/>}/>
             <Route path='/produkty/:id' element={<SingleProductsPage/>}/>
+            <Route path="/koszyk" element={<CartPage/>}/>
             <Route path="/koszyk/:id" element={<CartPage/>}/>
         </Routes>
     )
@@ -27,7 +32,6 @@ export const App = () => {
                 header={header}
                 content={content}
                 footer={footer}
-
             />
         </BrowserRouter>
     );

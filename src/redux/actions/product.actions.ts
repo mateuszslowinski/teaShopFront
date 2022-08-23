@@ -1,4 +1,4 @@
-import axios from "axios";
+import { api } from "../../utils/axios";
 import {
     ProductConstantsAction,
     ProductConstantsActionType,
@@ -20,7 +20,7 @@ export const getListProducts: getListProductType = () => async (dispatch) => {
     try {
         dispatch({type: PRODUCT_LIST_REQUEST});
 
-        const {data} = await axios.get('http://localhost:3001/api/products');
+        const {data} = await api.get('/products');
         dispatch({type: PRODUCT_LIST_SUCCESS, payload: data});
     } catch (e: any) {
         dispatch({
@@ -47,7 +47,7 @@ export const getOneProduct: getOneProductType = (id: string) => async (dispatch)
     try {
         dispatch({type: PRODUCT_DETAILS_REQUEST});
 
-        const {data} = await axios.get(`http://localhost:3001/api/products/${id}`);
+        const {data} = await api.get(`/products/${id}`);
         dispatch({type: PRODUCT_DETAILS_SUCCESS, payload: data});
     } catch (e: any) {
         dispatch({
