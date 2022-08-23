@@ -40,6 +40,7 @@ export const Header = () => {
                     <>
                         <NavLink to='/konto'><Button text='Moje konto'/></NavLink>
                         <Button text='Wyloguj' onClick={handleLogout}/>
+                        <NavLink to='/koszyk'><BasketIcon/></NavLink>
                     </>
                 ) : (
                     <>
@@ -47,7 +48,6 @@ export const Header = () => {
                         <NavLink to='/zaloguj'><Button text="Logowanie"/> </NavLink>
                     </>
                 )}
-                <NavLink to='/koszyk'><BasketIcon/></NavLink>
             </RowContainer>
         </HeaderContainer>
     )

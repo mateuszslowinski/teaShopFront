@@ -44,16 +44,3 @@ interface UserLogout{
 
 export type ActionsForLoginUser = UserLoginRequest | UserLoginSuccess | UserLoginFail | UserLogout;
 
-//REGISTER
-
-export enum UserRegisterConstantsAction {
-    USER_REGISTER_REQUEST = "USER_REGISTER_REQUEST",
-    USER_REGISTER_SUCCESS = "USER_REGISTER_SUCCESS",
-    USER_REGISTER_FAIL = "USER_REGISTER_FAIL",
-}
-
-export type UserRegisterConstantsType =
-    UserRegisterConstantsAction.USER_REGISTER_REQUEST
-    | UserRegisterConstantsAction.USER_REGISTER_SUCCESS
-    | UserRegisterConstantsAction.USER_REGISTER_FAIL
-

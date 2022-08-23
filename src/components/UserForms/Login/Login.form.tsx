@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 import {Button} from "../../../Commons/Button/Button";
 import {emailValidate} from "../../../constants/validation.patterns";
-import {Form, LoginContainer} from "./Login.styles";
+import {FormLogin, LoginContainer} from "./Login.styles";
 
 type Login = {
     email: string
@@ -36,7 +36,7 @@ export const LoginForm = () => {
 
     return (
         <LoginContainer>
-            <Form onSubmit={handleSubmit(onSubmit)} noValidate={true}>
+            <FormLogin onSubmit={handleSubmit(onSubmit)} noValidate={true}>
                 {error && <div>{error}</div>}
                 <input
                     type="email"
@@ -60,7 +60,7 @@ export const LoginForm = () => {
                 {password && <div>{password.message}</div>}
                 <Button text="Zaloguj"/>
                 <NavLink to='/rejestracja'>Nie masz konta? Założ je</NavLink>
-            </Form>
+            </FormLogin>
         </LoginContainer>
     )
 }

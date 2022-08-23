@@ -8,7 +8,7 @@ export const LoginContainer = styled(ColumnContainer)`
   min-height: 60vh;
 `
 
-export const Form = styled.form`
+export const FormLogin = styled.form`
   display: flex;
   flex-direction: column;
   padding: 20px 10px;
