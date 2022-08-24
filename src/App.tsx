@@ -8,6 +8,8 @@ import {Header} from './components/Header/Header';
 import {CartPage} from "./pages/Cart.page";
 import {LoginPage} from "./pages/Login.page";
 import {RegisterPage} from "./pages/Register.page";
+import {MyProfilePage} from "./pages/MyProfile.page";
+import {EditMyProfile} from "./components/MyProfile/EditMyProfile/EditMyProfile";
 
 
 export const App = () => {
@@ -19,6 +21,8 @@ export const App = () => {
             <Route path='/' element={<Home/>}/>
             <Route path='/zaloguj' element={<LoginPage/>}/>
             <Route path="/rejestracja" element={<RegisterPage/>}/>
+            <Route path='konto' element={<MyProfilePage/>}/>
+            <Route path='/konto/edytuj' element={<EditMyProfile/>}/>
             <Route path='/produkty' element={<ProductsPage/>}/>
             <Route path='/produkty/:id' element={<SingleProductsPage/>}/>
             <Route path="/koszyk" element={<CartPage/>}/>
