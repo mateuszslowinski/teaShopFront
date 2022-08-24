@@ -9,4 +9,5 @@ export const appColors = {
     electricRed: "#E02735",
     brutalBlue: "#0049B7",
     deepGreen: "#657a00",
+    iceCold: "#a0d2eb",
 }
