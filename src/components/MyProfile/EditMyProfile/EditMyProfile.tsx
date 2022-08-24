@@ -1,19 +1,31 @@
-import React, { useState} from "react";
+import React, {useEffect, useState} from "react";
 import {EditMyProfileContainer} from "./EditMyProfile.styles";
 import {Button} from "../../../Commons/Button/Button";
+
 import {useForm} from "react-hook-form";
 import {emailValidate} from "../../../constants/validation.patterns";
+import {UpdateProfileResponse, UserDetailsResponse} from "../../../types/user.type";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../redux/store";
+import {updateUserProfile} from "../../../redux/actions/user.actions";
+import {useNavigate} from "react-router-dom";
 
-type Edit ={
-    username:string,
+type Edit = {
+    username: string,
     email: string
     password: string,
-    confirmPassword:string
+    confirmPassword: string
 }
 
 export const EditMyProfile = () => {
-    const [errorMessage, setErrorMessage] = useState('');
+    const {user}: UserDetailsResponse = useSelector((state: RootState) => state.userDetails);
+    const {
+        userInfo,
+    }: UpdateProfileResponse = useSelector((state: RootState) => state.userUpdateProfile);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
+    const [errorMessage, setErrorMessage] = useState('');
     const [form, setForm] = useState({
         username: "",
         email: "",
@@ -21,21 +33,31 @@ export const EditMyProfile = () => {
         confirmPassword: ''
     });
 
+    useEffect(() => {
+    }, [dispatch,userInfo])
+
     const {
         handleSubmit,
         register,
         formState: {
-            errors: {email, password, username, confirmPassword},
+            errors: {email},
         },
     } = useForm<Edit>();
 
 
     const onSubmit = async () => {
+        const {username, email, password,} = form;
 
-        if (form.password === form.confirmPassword) {
-            console.log('zmiana danych')
-        } else {
-            setErrorMessage('Hasła musza być identyczne')
+        try {
+            if (form.password === form.confirmPassword) {
+                // @ts-ignore
+                dispatch(updateUserProfile({id: user._id, username, email, password}, user._id));
+                navigate('/konto');
+            } else {
+                setErrorMessage('Hasła musza być identyczne')
+            }
+        } catch (error: any) {
+            setErrorMessage(error.response?.data.message)
         }
     }
 
