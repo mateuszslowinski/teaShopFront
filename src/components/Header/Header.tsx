@@ -9,7 +9,7 @@ import {BasketIcon, HeaderContainer, LinkMenu} from "./Header.style";
 
 
 export const Header = () => {
-    const {user} = useSelector((state: RootState) => (state.userLogin));
+    const {userInfo} = useSelector((state: RootState) => (state.userLogin));
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ export const Header = () => {
                 </label>
             </div>
             <RowContainer>
-                {user ? (
+                {userInfo ? (
                     <>
                         <NavLink to='/konto'><Button text='Moje konto'/></NavLink>
                         <Button text='Wyloguj' onClick={handleLogout}/>

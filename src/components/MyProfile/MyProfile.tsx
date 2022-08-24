@@ -19,8 +19,8 @@ export const MyProfile = () => {
 
     useEffect(() => {
         // @ts-ignore
-        dispatch(getUserDetails(user._id))
-    }, [dispatch])
+        dispatch(getUserDetails())
+    }, [dispatch,user])
 
     return (
         <MyProfileContainer>
