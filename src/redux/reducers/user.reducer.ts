@@ -1,8 +1,12 @@
 import {
-    ActionsForLoginUser, ActionsForUserDetails, UserDetailsConstantsAction,
-    UserLoginConstantsAction,
+    ActionsForLoginUser, ActionsForUserDetails, ActionsForUserUpdateProfile, UserDetailsConstantsAction,
+    UserLoginConstantsAction, UserUpdateProfileConstantsAction,
 } from "../constatns/user.constants";
-import {UserDetailsResponse, UserLoginResponse} from "../../types/user.type";
+import {
+    UpdateProfileResponse,
+    UserDetailsResponse,
+    UserLoginResponse
+} from "../../types/user.type";
 
 //LOGIN
 interface UserLoginState {
@@ -29,7 +33,7 @@ export const userLoginReducer = (
         case USER_LOGIN_SUCCESS:
             return {
                 loading: false,
-                user: action.payload
+                userInfo: action.payload
             };
         case USER_LOGIN_FAIL:
             return {
@@ -45,7 +49,7 @@ export const userLoginReducer = (
 
 //USER DETAILS
 interface UserDetailsState {
-    user: UserDetailsResponse | {  },
+    user: UserDetailsResponse | {},
     loading: boolean
     error?: string
 }
@@ -54,7 +58,6 @@ const initialStateForDetailsUser: UserDetailsState = {
     user: {},
     loading: true,
 }
-
 
 export const userDetailsReducer = (
     state: UserDetailsState = initialStateForDetailsUser,
@@ -77,9 +80,46 @@ export const userDetailsReducer = (
                 error: action.payload
             };
         case UserDetailsConstantsAction.USER_DETAILS_RESET:
-        return {
-            user:{}
-        };
+            return {
+                user: {}
+            };
+        default:
+            return state
+    }
+};
+
+//UPDATED PROFILE
+interface UpdateUserProfileState {
+    userInfo: UpdateProfileResponse | {},
+    loading: boolean
+    error?: string
+}
+
+const initialStateForUpdatedProfilesUser: UpdateUserProfileState = {
+    userInfo: {},
+    loading: true,
+}
+
+export const updateUserProfileReducer = (
+    state: UpdateUserProfileState = initialStateForUpdatedProfilesUser,
+    action: ActionsForUserUpdateProfile
+) => {
+    switch (action.type) {
+        case UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_REQUEST:
+            return {
+                loading: true
+            };
+        case UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_SUCCESS:
+            return {
+                loading: false,
+                success: true,
+                userInfo: action.payload
+            };
+        case UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            };
         default:
             return state
     }

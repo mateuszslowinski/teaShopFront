@@ -1,4 +1,4 @@
-import {UserDetailsResponse, UserLoginResponse} from "../../types/user.type";
+import {UserDetailsResponse, UserLoginResponse,} from "../../types/user.type";
 
 //LOGIN
 export enum UserLoginConstantsAction {
@@ -90,3 +90,46 @@ interface UserDetailsReset {
 export type ActionsForUserDetails = UserDetailsRequest | UserDetailsSuccess | UserDetailsFail | UserDetailsReset;
 
 
+//UPDATED
+export enum UserUpdateProfileConstantsAction {
+    USER_UPDATE_PROFILE_REQUEST = "USER_UPDATE_PROFILE_REQUEST",
+    USER_UPDATE_PROFILE_SUCCESS = "USER_UPDATE_PROFILE_SUCCESS",
+    USER_UPDATE_PROFILE_FAIL = "USER_UPDATE_PROFILE_FAIL",
+    USER_UPDATE_PROFILE_RESET = "USER_UPDATE_PROFILE_RESET",
+}
+export type UserUpdateProfileConstantsType =
+    UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_REQUEST
+    | UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_SUCCESS
+    | UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_FAIL
+    | UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_RESET
+
+
+
+interface UserUpdateProfileRequest {
+    type: UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_REQUEST;
+    loading: boolean;
+    error: string
+}
+
+interface UserUpdateProfileSuccess {
+    type: UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_SUCCESS;
+    loading: boolean;
+    payload: UserDetailsResponse;
+    error: string
+}
+
+interface UserUpdateProfileFail {
+    type: UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_FAIL;
+    loading: boolean;
+    payload: string;
+    error: string
+}
+
+interface UserUpdateProfileReset {
+    type: UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_RESET;
+    loading: boolean;
+    payload: string;
+    error: string
+}
+
+export type ActionsForUserUpdateProfile = UserUpdateProfileRequest | UserUpdateProfileSuccess | UserUpdateProfileFail | UserUpdateProfileReset;

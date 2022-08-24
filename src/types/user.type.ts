@@ -6,9 +6,9 @@ export type UserLoginDetails ={
 }
 
 export type UserLoginResponse = {
-    error:string,
-    loading: boolean
     user: UserLoginDetails
+    loading: boolean
+    error:string,
 }
 
 
@@ -20,7 +20,23 @@ export type UserDetails  = {
     createdAt: Date,
 }
 export type UserDetailsResponse ={
-    error:string,
-    loading: boolean
     user: UserDetails
+    loading: boolean
+    error:string,
+}
+
+//UPDATED PROFILE
+export type UpdateProfile ={
+    _id: string
+    username:string,
+    email: string,
+    isAdmin: boolean,
+    createdAt: Date,
+    token: string,
+}
+
+export type UpdateProfileResponse = {
+    userInfo: UpdateProfile,
+    loading:boolean,
+    error:string
 }
