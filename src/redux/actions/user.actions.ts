@@ -101,10 +101,10 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
             },
         };
 
-        const {data} = await api.put(`/users/profile/${user.id}`,user, config)
+        const {data} = await api.put(`/users/profile/${user.id}`, user, config)
 
-        dispatch({type: UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_SUCCESS,  payload: data})
-
+        dispatch({type: UserUpdateProfileConstantsAction.USER_UPDATE_PROFILE_SUCCESS, payload: data})
+        dispatch({type: UserLoginConstantsAction.USER_LOGIN_SUCCESS, payload: data})
 
     } catch (e: any) {
         dispatch({
