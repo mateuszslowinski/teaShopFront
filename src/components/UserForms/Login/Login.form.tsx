@@ -54,6 +54,10 @@ export const LoginForm = () => {
                     type="password"
                     {...register('password', {
                         required: `Hasło jest wymagane`,
+                        maxLength: {
+                            value: 15,
+                            message: "Hasło nie może być dłuższe niż 15 znaków"
+                        },
                     })}
                     placeholder="Hasło..."
                 />

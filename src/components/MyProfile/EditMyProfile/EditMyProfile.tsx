@@ -34,13 +34,13 @@ export const EditMyProfile = () => {
     });
 
     useEffect(() => {
-    }, [dispatch,userInfo])
+    }, [dispatch, userInfo])
 
     const {
         handleSubmit,
         register,
         formState: {
-            errors: {email},
+            errors: {email, password, username,},
         },
     } = useForm<Edit>();
 
@@ -76,14 +76,18 @@ export const EditMyProfile = () => {
                 <h2>Edtuj swoje dane</h2>
                 {errorMessage && <div>{errorMessage}</div>}
                 <p>Nazwa użytkownika:</p>
+                {username && <div>{username.message}</div>}
                 <input
                     type="text"
                     placeholder="Nazwa uzytkownika..."
                     value={form.username}
+                    {...register('username',
+                        {maxLength: {value: 20, message: "Nazwa użytkownika nie może być dłuższa niż 20 znaków"}})}
                     onChange={(e) => updateForm('username', e.target.value)}
                 />
 
                 <p>Email:</p>
+                {email && <div>{email.message}</div>}
                 <input
                     type="email"
                     placeholder="Email..."
@@ -96,14 +100,19 @@ export const EditMyProfile = () => {
                     })}
                     onChange={(e) => updateForm('email', e.target.value)}
                 />
-                {email && <div>{email.message}</div>}
+
+
                 <p>Hasło:</p>
+                {password && <div>{password.message}</div>}
                 <input
                     type="password"
                     placeholder="Hasło..."
                     value={form.password}
+                    {...register('password',
+                        {maxLength: {value: 15, message: "Hasło nie może być dłuższe niż 15 znaków"}})}
                     onChange={(e) => updateForm('password', e.target.value)}
                 />
+
                 <p>Potwierdz hasło:</p>
                 <input
                     type="password"
