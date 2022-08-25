@@ -6,10 +6,11 @@ import {logout} from "../../redux/actions/user.actions";
 import {Button} from "../../Commons/Button/Button";
 import {RowContainer} from "../../constants/Layouts/FlexDirection.styles";
 import {BasketIcon, HeaderContainer, LinkMenu} from "./Header.style";
+import {UserLoginResponse} from "../../types/user.type";
 
 
 export const Header = () => {
-    const {user} = useSelector((state: RootState) => (state.userLogin));
+    const {userInfo}:UserLoginResponse = useSelector((state: RootState) => (state.userLogin));
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -36,7 +37,7 @@ export const Header = () => {
                 </label>
             </div>
             <RowContainer>
-                {user ? (
+                {userInfo ? (
                     <>
                         <NavLink to='/konto'><Button text='Moje konto'/></NavLink>
                         <Button text='Wyloguj' onClick={handleLogout}/>

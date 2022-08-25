@@ -59,6 +59,10 @@ export const RegisterForm = () => {
                     type="text"
                     {...register('username', {
                         required: "Nazwa użytkownika jest wymagana",
+                        maxLength: {
+                            value: 20,
+                            message: "Nazwa użytkownika nie może być dłuższa niż 20 znaków"
+                        }
                     })}
                     placeholder="Nazwa użytkownika..."
                 />
@@ -72,7 +76,7 @@ export const RegisterForm = () => {
                             message: `Email musi zawierać @`,
                         },
                     })}
-                   onChange={handleChange}
+                    onChange={handleChange}
                     placeholder="Email..."
                 />
                 {email && <div>{email.message}</div>}
@@ -80,6 +84,10 @@ export const RegisterForm = () => {
                     type="password"
                     {...register('password', {
                         required: `Hasło jest wymagane`,
+                        maxLength: {
+                            value: 15,
+                            message: "Hasło nie może być dłuższe niż 15 znaków"
+                        },
                     })}
                     placeholder="Hasło..."
                 />

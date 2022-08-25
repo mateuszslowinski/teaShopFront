@@ -14,7 +14,7 @@ type Login = {
 }
 
 export const LoginForm = () => {
-    const {error, user} = useSelector((state: RootState) => state.userLogin);
+    const {error, userInfo} = useSelector((state: RootState) => state.userLogin);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {
@@ -30,7 +30,7 @@ export const LoginForm = () => {
         dispatch(login(email, password));
     }
 
-    if (user) {
+    if (userInfo) {
         navigate('/');
     }
 
@@ -54,6 +54,10 @@ export const LoginForm = () => {
                     type="password"
                     {...register('password', {
                         required: `Hasło jest wymagane`,
+                        maxLength: {
+                            value: 15,
+                            message: "Hasło nie może być dłuższe niż 15 znaków"
+                        },
                     })}
                     placeholder="Hasło..."
                 />
