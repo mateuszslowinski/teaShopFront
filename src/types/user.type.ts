@@ -6,7 +6,7 @@ export type UserLoginDetails ={
 }
 
 export type UserLoginResponse = {
-    user: UserLoginDetails
+    userInfo: UserLoginDetails
     loading: boolean
     error:string,
 }

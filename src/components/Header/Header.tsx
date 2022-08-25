@@ -6,10 +6,11 @@ import {logout} from "../../redux/actions/user.actions";
 import {Button} from "../../Commons/Button/Button";
 import {RowContainer} from "../../constants/Layouts/FlexDirection.styles";
 import {BasketIcon, HeaderContainer, LinkMenu} from "./Header.style";
+import {UserLoginResponse} from "../../types/user.type";
 
 
 export const Header = () => {
-    const {userInfo} = useSelector((state: RootState) => (state.userLogin));
+    const {userInfo}:UserLoginResponse = useSelector((state: RootState) => (state.userLogin));
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

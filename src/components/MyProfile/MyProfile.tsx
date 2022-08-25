@@ -20,7 +20,7 @@ export const MyProfile = () => {
     useEffect(() => {
         // @ts-ignore
         dispatch(getUserDetails())
-    }, [dispatch,user])
+    }, [dispatch])
 
     return (
         <MyProfileContainer>
