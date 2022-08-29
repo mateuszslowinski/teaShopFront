@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import {FormRegister, RegisterContainer} from "./Register.styles";
-import {emailValidate} from "../../../constants/validation.patterns";
+import {emailValidate} from "../../../constants/Form/validation.patterns";
 import {Button} from "../../../Commons/Button/Button";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import {api} from "../../../utils/axios";
 import {Message} from "../../../Commons/Message/Message";
-
 
 type Register = {
     username: string

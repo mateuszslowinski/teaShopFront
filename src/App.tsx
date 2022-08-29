@@ -11,9 +11,7 @@ import {RegisterPage} from "./pages/Register.page";
 import {MyProfilePage} from "./pages/MyProfile.page";
 import {EditMyProfile} from "./components/MyProfile/EditMyProfile/EditMyProfile";
 
-
 export const App = () => {
-
     const header = <Header/>
     const footer = (<div>footer</div>)
     const content = (

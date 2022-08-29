@@ -1,12 +1,13 @@
-import { api } from "../../utils/axios";
+import {api} from "../../utils/axios";
 import {
     ProductConstantsAction,
     ProductConstantsActionType,
-    ProductDetailsConstantsAction, ProductDetailsConstantsActionType
+    ProductDetailsConstantsAction, ProductDetailsConstantsActionType, ReviewProductConstantsAction
 } from "../constatns/product.constants";
+import {RootState} from "../store";
+import {ReviewProductType} from "../../types/product.types";
 
 // LIST PRODUCTS
-
 interface DispatchInterfaceForListProducts {
     type: ProductConstantsActionType
     payload?: {}
@@ -33,7 +34,6 @@ export const getListProducts: getListProductType = () => async (dispatch) => {
 }
 
 // SINGLE PRODUCT
-
 interface DispatchInterfaceForOneProduct {
     type: ProductDetailsConstantsActionType
     payload?: {}
@@ -56,5 +56,38 @@ export const getOneProduct: getOneProductType = (id: string) => async (dispatch)
                 ? e.response.data.message
                 : e.message
         })
+    }
+}
+
+//CREATE REVIEW PRODUCT
+interface DispatchInterfaceForCreateProductReview {
+    type: ReviewProductConstantsAction
+    payload?: string
+}
+
+type createProductReviewType = (productId: string, review: ReviewProductType) => (dispatch: (arg: DispatchInterfaceForCreateProductReview) => DispatchInterfaceForCreateProductReview, getState: () => RootState) => Promise<void>
+
+export const createProductReview: createProductReviewType = (productId, review) => async (dispatch, getState) => {
+    try {
+        dispatch({type: ReviewProductConstantsAction.PRODUCT_REVIEW_REQUEST});
+
+        const {userLogin: {userInfo: {token}}} = getState();
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        };
+
+        await api.post(`/review/${productId}`, review, config);
+        dispatch({type: ReviewProductConstantsAction.PRODUCT_REVIEW_SUCCESS});
+
+    } catch (e: any) {
+        dispatch({
+            type: ReviewProductConstantsAction.PRODUCT_REVIEW_FAIL,
+            payload: e.response && e.response.data.message
+                ? e.response.data.message
+                : e.message
+        });
     }
 }

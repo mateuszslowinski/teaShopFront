@@ -1,7 +1,10 @@
 import {
     ActionForDetailsProducts,
     ActionForProducts,
-    ProductConstantsAction, ProductDetailsConstantsAction
+    ActionForReviewProducts,
+    ProductConstantsAction,
+    ProductDetailsConstantsAction,
+    ReviewProductConstantsAction
 } from "../constatns/product.constants";
 import {ProductTypes} from "../../types/product.types";
 
@@ -43,19 +46,15 @@ export const productListReducer = (state: ProductListState = initialStateForProd
 };
 
 // ONE PRODUCT DETAIL
-
 interface DetailsProductState {
-    product?: ProductTypes | null,
+    product?: ProductTypes | null
     loading: boolean
     error?: string
 }
-
 const initialStateForOneProduct: DetailsProductState = {
     product:null,
     loading: true,
 }
-
-
 export const productDetailReducer = (state: DetailsProductState = initialStateForOneProduct, action: ActionForDetailsProducts) => {
     switch (action.type) {
         case ProductDetailsConstantsAction.PRODUCT_DETAILS_REQUEST:
@@ -73,6 +72,37 @@ export const productDetailReducer = (state: DetailsProductState = initialStateFo
                 product: null,
                 error: action.payload
             };
+        default:
+            return state;
+    }
+};
+
+//PRODUCT REVIEW
+
+interface ReviewProductInitialState {
+    loading: boolean
+}
+const initialStateForReviewProduct: ReviewProductInitialState = {
+    loading: true,
+}
+export const reviewProductReducer = (state: ReviewProductInitialState = initialStateForReviewProduct, action: ActionForReviewProducts ) => {
+    switch (action.type) {
+        case ReviewProductConstantsAction.PRODUCT_REVIEW_REQUEST:
+            return {
+                loading: true,
+            };
+        case ReviewProductConstantsAction.PRODUCT_REVIEW_SUCCESS:
+            return {
+                loading: false,
+                success:true,
+            };
+        case ReviewProductConstantsAction.PRODUCT_REVIEW_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            };
+        case ReviewProductConstantsAction.PRODUCT_REVIEW_RESET :
+            return {}
         default:
             return state;
     }

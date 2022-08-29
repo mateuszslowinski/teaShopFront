@@ -5,8 +5,9 @@ import {login} from "../../../redux/actions/user.actions";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 import {Button} from "../../../Commons/Button/Button";
-import {emailValidate} from "../../../constants/validation.patterns";
 import {FormLogin, LoginContainer} from "./Login.styles";
+import {emailValidate} from "../../../constants/Form/validation.patterns";
+import {UserLoginResponse} from "../../../types/user.type";
 
 type Login = {
     email: string
@@ -14,7 +15,8 @@ type Login = {
 }
 
 export const LoginForm = () => {
-    const {error, userInfo} = useSelector((state: RootState) => state.userLogin);
+
+    const {error, userInfo}:UserLoginResponse = useSelector((state: RootState) => state.userLogin);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {
