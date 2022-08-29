@@ -1,34 +1,33 @@
 //USER LOGIN
-export type UserLoginDetails ={
+export type UserLoginDetailsType = {
     _id: string,
     isAdmin: boolean,
     token: string,
 }
 
 export type UserLoginResponse = {
-    userInfo: UserLoginDetails
+    userInfo: UserLoginDetailsType
     loading: boolean
-    error:string,
+    error: string,
 }
 
-
 //USER DETAILS
-export type UserDetails  = {
+export type UserDetailsType = {
     _id: string,
     username: string,
     email: string,
     createdAt: Date,
 }
-export type UserDetailsResponse ={
-    user: UserDetails
+export type UserDetailsResponse = {
+    user: UserDetailsType
     loading: boolean
-    error:string,
+    error: string,
 }
 
 //UPDATED PROFILE
-export type UpdateProfile ={
-    _id: string
-    username:string,
+export type UpdateProfileType = {
+    id: string
+    username: string,
     email: string,
     isAdmin: boolean,
     createdAt: Date,
@@ -36,7 +35,7 @@ export type UpdateProfile ={
 }
 
 export type UpdateProfileResponse = {
-    userInfo: UpdateProfile,
-    loading:boolean,
-    error:string
+    userInfo: UpdateProfileType,
+    loading: boolean,
+    error: string
 }
