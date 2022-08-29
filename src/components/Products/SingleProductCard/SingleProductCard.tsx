@@ -11,7 +11,7 @@ interface Props {
     product: ProductTypes
 }
 
-export const ProductCard = ({product}: Props) => {
+export const SingleProductCard = ({product}: Props) => {
     const {name, category, rating, numReviews, _id, price} = product
 
     return (
@@ -29,7 +29,7 @@ export const ProductCard = ({product}: Props) => {
                     name="rating"
                 />
                 <span>
-               {numReviews === 0 ? <p>0 ocen</p> : <p>oceny</p>}
+               {numReviews === 0 ? <p>0 ocen</p> : <p>{numReviews} ocen</p>}
             </span>
             </RatingRowContainer>
             <div>

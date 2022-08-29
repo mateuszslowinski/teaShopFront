@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {getListProducts} from "../../redux/actions/product.actions";
-import {ProductCard} from './SingleProductCard/SingleProductCard';
+import { SingleProductCard} from './SingleProductCard/SingleProductCard';
 import {ProductTypes} from "../../types/product.types";
 import {ProductsSectionContainer} from './Products.styles';
 import {LoadingSpinner} from "../../Commons/LoadingSpinner/LoadingSpinner";
@@ -29,7 +29,7 @@ export const Products = () => {
                     : (
                         <>
                             {products.map((product: ProductTypes) => (
-                                <ProductCard key={product.name} product={product}/>
+                                <SingleProductCard key={product.name} product={product}/>
                             ))}
                         </>
                     )

@@ -3,12 +3,12 @@ import {ColumnContainer, RowContainer} from "../../constants/Layouts/FlexDirecti
 import {appColors} from "../../constants/appColoros";
 
 
-
 export const CartContainer = styled(RowContainer)`
   width: 100%;
   padding: 10px;
   align-items: flex-start;
   gap: 20px;
+
   & Button {
     align-self: center;
     background-color: ${appColors.dimWhite};
@@ -20,31 +20,32 @@ export const DetailsProductContainer = styled(ColumnContainer)`
   background-color: ${appColors.grandpaOrange};
   border-radius: 5px;
   padding: 10px;
-  
+
   align-items: flex-start;
   gap: 10px;
-  
-  
-  & h3,p,div{
+
+
+  & h3, p, div {
     font-size: 1.4rem;
     color: ${appColors.primary};
     background-color: ${appColors.grandpaOrange};
 
   }
-  
-  & div{
+
+  & div {
     display: flex;
     width: 100%;
-background-color: transparent;
+    background-color: transparent;
     justify-content: space-between;
     align-items: center;
   }
+
   & span {
-  
+
     align-self: flex-start;
 
   }
-  
+
 `
 
 export const DetailsProduct = styled(RowContainer)`
@@ -52,26 +53,26 @@ export const DetailsProduct = styled(RowContainer)`
   border: 1px solid ${appColors.primary};
   background-color: ${appColors.dimWhite};
 
-  
+
   & select {
     border-radius: 4px;
     font-size: 1.2rem;
     border: none;
-    background-color: ${appColors.dimWhite};
+    background-color: ${appColors.secondary};
     color: ${appColors.primary};
+    
+    & option {
+      font-size: 1.2rem;
+      color: ${appColors.primary};
+      background-color: transparent;
+    }
   }
-  
- & option {
-   font-size: 1.2rem;
-   color: ${appColors.primary};
-   background-color: ${appColors.dimWhite};
- }
 `
 
-export const ImgProduct =styled.img`
-  width:60px;
+export const ImgProduct = styled.img`
+  width: 60px;
   height: 60px;
-  
+
 
 
 `
@@ -114,9 +115,9 @@ export const Order = styled(ColumnContainer)`
     font-size: 1.4rem;
   }
 
- & a {
-   width: 100%;
-   text-align: center;
-   background-color: transparent;
- }
+  & a {
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+  }
 `
