@@ -1,13 +1,14 @@
 import { api } from "../../utils/axios";
 import {CartConstantsAction, CartConstantsActionType} from "../constatns/cart.constants";
+import {SingleProductCartTypes} from "../../types/product.types";
 
 
-interface DispatchInterfaceForCart {
+interface DispatchInterfaceForAddToCart {
     type: CartConstantsActionType
-    payload?: {}
+    payload: SingleProductCartTypes
 }
 
-type addForCartType = (id: string, quantity:number) => (dispatch: (arg: DispatchInterfaceForCart) => DispatchInterfaceForCart) => Promise<void>
+type addForCartType = (id: string, quantity:number) => (dispatch: (arg: DispatchInterfaceForAddToCart) => DispatchInterfaceForAddToCart) => Promise<any>
 
 export const addToCart:addForCartType = (id, quantity) => async dispatch => {
     const {data} = await api.get(`/products/${id}`);
@@ -25,7 +26,12 @@ export const addToCart:addForCartType = (id, quantity) => async dispatch => {
 }
 
 
-type removeForCartType = (id: string) => (dispatch: (arg: DispatchInterfaceForCart) => DispatchInterfaceForCart) => Promise<void>
+interface DispatchInterfaceForRemoveFormCart {
+    type: CartConstantsActionType
+    payload: string
+}
+
+type removeForCartType = (id: string) => (dispatch: (arg: DispatchInterfaceForRemoveFormCart) => DispatchInterfaceForRemoveFormCart) => Promise<void>
 
 export const removeFromCart:removeForCartType = (id:string) => async dispatch => {
     dispatch({
