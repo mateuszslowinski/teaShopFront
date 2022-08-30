@@ -16,7 +16,9 @@ interface UserLoginState {
 }
 
 
-const userFromLocalStorage = JSON.parse(localStorage.getItem('userInfo') || '');
+const userFromLocalStorage = localStorage.getItem('userInfo')
+    ? JSON.parse(localStorage.getItem('userInfo') || '')
+    : null;
 
 const initialStateForUserLogin: UserLoginState = {
     userInfo: userFromLocalStorage,
