@@ -7,8 +7,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import moment from "moment";
 import 'moment/locale/pl'
-import {UserDetailsResponse} from "../../types/user.type";
+import {UserDetailsResponse, UserLoginResponse} from "../../types/user.type";
 import {getUserDetails} from "../../redux/actions/user.actions";
+import {IoMdAdd} from 'react-icons/io'
 
 moment.locale('pl')
 
@@ -16,6 +17,7 @@ moment.locale('pl')
 export const MyProfile = () => {
     const dispatch = useDispatch();
     const {user}: UserDetailsResponse = useSelector((state: RootState) => state.userDetails);
+    const {userInfo: {isAdmin}}: UserLoginResponse = useSelector((state: RootState) => state.userLogin);
 
     useEffect(() => {
         // @ts-ignore
@@ -35,12 +37,30 @@ export const MyProfile = () => {
                         <p>Edytuj dane</p>
                     </ButtonBox>
                 </NavLink>
-                <NavLink to='/konto/recenzje'>
-                    <ButtonBox>
-                        <MdOutlineReviews/>
-                        <p>Recenzje</p>
-                    </ButtonBox>
-                </NavLink>
+                {isAdmin ? (
+                    <>
+                    <NavLink to='/admin/produkty/dodaj'>
+                        <ButtonBox>
+                            <IoMdAdd/>
+                            <p>Dodaj produkt</p>
+                        </ButtonBox>
+                    </NavLink>
+                    <NavLink to='/admin/uzytkownicy'>
+                        <ButtonBox>
+                            <MdOutlineReviews/>
+                            <p>Lista uzytkowników</p>
+                        </ButtonBox>
+                    </NavLink>
+                    </>
+                ) : (
+                    <NavLink to='/konto/recenzje'>
+                        <ButtonBox>
+                            <MdOutlineReviews/>
+                            <p>Recenzje</p>
+                        </ButtonBox>
+                    </NavLink>
+                )}
+
             </DetailsContainer>
         </MyProfileContainer>
     )
