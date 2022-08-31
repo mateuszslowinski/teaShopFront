@@ -1,3 +1,14 @@
+//SINGLE USER
+export type UserType = {
+    _id: string,
+    email: string,
+    isAdmin: boolean,
+    username: string,
+    password: string,
+    updatedAt: Date,
+    createdAt: Date
+}
+
 //USER LOGIN
 export type UserLoginDetailsType = {
     _id: string,
