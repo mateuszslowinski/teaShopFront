@@ -14,8 +14,9 @@ import {ProtectedRoutes} from "./utils/ProtectedRoutes";
 import {AdminPage} from "./pages/AdminPages/Admin.page";
 import {NotFoundPage} from "./pages/NotFound.page";
 import {AddProductPage} from "./pages/AdminPages/AddProduct.page";
-import {AllProductListPage} from "./pages/AdminPages/AllProductListPage";
+import {AllProductListPage} from "./pages/AdminPages/AllProductList.page";
 import {EditProductPage} from "./pages/AdminPages/EditProduct.page";
+import {AllUsersListPage} from "./pages/AdminPages/AllUsersList.page";
 
 export const App = () => {
 
@@ -29,6 +30,7 @@ export const App = () => {
                 <Route path='/admin/produkty' element={<AllProductListPage/>}/>
                 <Route path='/admin/produkty/dodaj' element={<AddProductPage/>}/>
                 <Route path='/admin/produkty/edytuj/:id' element={<EditProductPage/>}/>
+                <Route path="/admin/uzytkownicy" element={<AllUsersListPage/>}/>
             </Route>
             <Route path='/' element={<Home/>}/>
             <Route path='/zaloguj' element={<LoginPage/>}/>
