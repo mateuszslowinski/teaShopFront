@@ -6,6 +6,7 @@ export const AddProductContainer = styled(ColumnContainer)`
   overflow: hidden;
   padding: 30px;
   min-height: 60vh;
+  position: relative;
 `
 
 export const AddProductForm = styled.form`
@@ -14,12 +15,18 @@ export const AddProductForm = styled.form`
   padding: 20px 10px;
   border-radius: 10px;
   background-color: ${appColors.dimBlue};
+
   
-  & select, option,textarea,input,p {
+  & select, option,textarea,input,p,h2 {
     background-color: ${appColors.grandpaOrange};
     font-size: 1.4rem;
     color: ${appColors.primary};
     padding: 5px;
+  }
+  & h2{
+    text-align: center;
+    background-color: transparent;
+    font-size: 2.2rem;
   }
 
   & input {
@@ -53,4 +60,20 @@ export const ErrorMessage = styled.div`
   color: ${appColors.electricRed};
   background-color: ${appColors.electricRed};
   font-size: 1.2rem;
+`
+
+export const MessageContainer = styled(ColumnContainer)`
+  position: absolute;
+  background-color: lightgreen;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+
+  & p {
+    font-size: 2.5rem;
+    background-color: transparent;
+    color: ${appColors.primary};
+  }
+
+  
 `

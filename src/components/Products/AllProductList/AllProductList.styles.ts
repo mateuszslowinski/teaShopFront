@@ -36,7 +36,6 @@ export const MessageContainer = styled(ColumnContainer)`
   text-align: center;
   padding: 10px;
 
-
   & p {
     background-color: transparent;
   }

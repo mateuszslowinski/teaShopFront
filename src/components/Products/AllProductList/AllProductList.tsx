@@ -9,6 +9,7 @@ import {api} from "../../../utils/axios";
 
 
 export const AllProductList = () => {
+    const {userInfo: {token}} = useSelector((store: RootState) => store.userLogin);
     const dispatch = useDispatch();
     const [errorMessage, setErrorMessage] = useState('');
     const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,7 @@ export const AllProductList = () => {
     const {products} = useSelector((store: RootState) => store.productList)
 
 
-    const handleRemoveProductClick =(id:string) =>{
+    const handleRemoveProductClick = (id: string) => {
         setRemoveProductId(id)
         setIsOpen(true)
     }
@@ -29,7 +30,12 @@ export const AllProductList = () => {
 
     const handleConfirmProductClick = async () => {
         try {
-            await api.delete(`/products/${removeProductId}`)
+            await api.delete(`/products/${removeProductId}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token} `,
+                },
+            })
             setIsOpen(false)
             // @ts-ignore
             dispatch(getListProducts())
@@ -52,7 +58,7 @@ export const AllProductList = () => {
             {products.map(product => (
                 <SingleProductContainer>
                     <h3> {product.name}</h3>
-                    <Button text="usuń" onClick={()=>handleRemoveProductClick(product._id)}/>
+                    <Button text="usuń" onClick={() => handleRemoveProductClick(product._id)}/>
                     <NavLink to="/admin/produkty/edytuj"><Button text="edytuj"/></NavLink>
                     <NavLink to={`/produkty/${product._id}`}><Button text="szczegóły"/></NavLink>
                 </SingleProductContainer>
