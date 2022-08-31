@@ -27,7 +27,7 @@ export const RegisterForm = () => {
 
     const onSubmit = async ({username, email, password}: Register) => {
         try {
-            const res = await api.post('/users', ({username, email, password}), {
+            const res = await api.post('/users/register', ({username, email, password}), {
                 headers: {
                     "Content-Type": "application/json"
                 },
