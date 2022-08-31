@@ -14,8 +14,6 @@ interface UserLoginState {
     loading: boolean
     error?: string
 }
-
-
 const userFromLocalStorage = localStorage.getItem('userInfo')
     ? JSON.parse(localStorage.getItem('userInfo') || '')
     : null;

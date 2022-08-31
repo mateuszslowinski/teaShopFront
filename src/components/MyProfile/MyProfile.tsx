@@ -9,7 +9,7 @@ import moment from "moment";
 import 'moment/locale/pl'
 import {UserDetailsResponse, UserLoginResponse} from "../../types/user.type";
 import {getUserDetails} from "../../redux/actions/user.actions";
-import {IoMdAdd} from 'react-icons/io'
+import {IoMdAdd,IoIosListBox} from 'react-icons/io'
 
 moment.locale('pl')
 
@@ -51,6 +51,12 @@ export const MyProfile = () => {
                             <p>Lista uzytkowników</p>
                         </ButtonBox>
                     </NavLink>
+                        <NavLink to='/admin/produkty'>
+                            <ButtonBox>
+                                <IoIosListBox/>
+                                <p>Lista produktów</p>
+                            </ButtonBox>
+                        </NavLink>
                     </>
                 ) : (
                     <NavLink to='/konto/recenzje'>

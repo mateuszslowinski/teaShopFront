@@ -14,6 +14,7 @@ import {ProtectedRoutes} from "./utils/ProtectedRoutes";
 import {AdminPage} from "./pages/AdminPages/Admin.page";
 import {NotFoundPage} from "./pages/NotFound.page";
 import {AddProductPage} from "./pages/AdminPages/AddProduct.page";
+import {AllProductListPage} from "./pages/AdminPages/AllProductListPage";
 
 export const App = () => {
 
@@ -24,7 +25,9 @@ export const App = () => {
         <Routes>
             <Route element={<ProtectedRoutes/>}>
                 <Route path='/admin' element={<AdminPage/>}/>
+                <Route path='/admin/produkty' element={<AllProductListPage/>}/>
                 <Route path='/admin/produkty/dodaj' element={<AddProductPage/>}/>
+
             </Route>
             <Route path='/' element={<Home/>}/>
             <Route path='/zaloguj' element={<LoginPage/>}/>
