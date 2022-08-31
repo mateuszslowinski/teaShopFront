@@ -15,6 +15,7 @@ import {AdminPage} from "./pages/AdminPages/Admin.page";
 import {NotFoundPage} from "./pages/NotFound.page";
 import {AddProductPage} from "./pages/AdminPages/AddProduct.page";
 import {AllProductListPage} from "./pages/AdminPages/AllProductListPage";
+import {EditProductPage} from "./pages/AdminPages/EditProduct.page";
 
 export const App = () => {
 
@@ -27,7 +28,7 @@ export const App = () => {
                 <Route path='/admin' element={<AdminPage/>}/>
                 <Route path='/admin/produkty' element={<AllProductListPage/>}/>
                 <Route path='/admin/produkty/dodaj' element={<AddProductPage/>}/>
-
+                <Route path='/admin/produkty/edytuj/:id' element={<EditProductPage/>}/>
             </Route>
             <Route path='/' element={<Home/>}/>
             <Route path='/zaloguj' element={<LoginPage/>}/>

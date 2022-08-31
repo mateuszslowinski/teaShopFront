@@ -59,7 +59,7 @@ export const AllProductList = () => {
                 <SingleProductContainer>
                     <h3> {product.name}</h3>
                     <Button text="usuń" onClick={() => handleRemoveProductClick(product._id)}/>
-                    <NavLink to="/admin/produkty/edytuj"><Button text="edytuj"/></NavLink>
+                    <NavLink to={`/admin/produkty/edytuj/${product._id}`}><Button text="edytuj"/></NavLink>
                     <NavLink to={`/produkty/${product._id}`}><Button text="szczegóły"/></NavLink>
                 </SingleProductContainer>
             ))}

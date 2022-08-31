@@ -1,24 +1,41 @@
-import React, {useState} from 'react';
-import {useForm} from "react-hook-form";
-import {api} from '../../../utils/axios';
-import {Button} from '../../../Commons/Button/Button';
+import React, {ChangeEvent,  useState} from "react";
+import {AddProductForm, ErrorMessage, MessageContainer} from "../AddProduct/AddProduct.styles";
 import {CategorySelectOptions} from "../../../constants/Form/categorySelectOptions";
-import {AddProductContainer, AddProductForm, ErrorMessage, MessageContainer} from "./AddProduct.styles";
+import {Button} from "../../../Commons/Button/Button";
+import {useForm} from "react-hook-form";
+import {ProductTypes} from "../../../types/product.types";
+import {api} from "../../../utils/axios";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
+import {useParams} from "react-router";
 
-type AddProduct = {
+type EditProduct = {
     productName: string
     category: string,
-    image: File[],
+    image: any
     description: string,
     price: number,
     countInStock: number
 }
 
-export const AddProduct = () => {
-    const [errorMessage, setErrorMessage] = useState('');
+interface Props {
+    product: ProductTypes
+}
+
+export const EditProduct = ({product}: Props) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [form, setForm] = useState<EditProduct>({
+        productName: product.name,
+        category: product.category,
+        image: product.image,
+        description: product.description,
+        price: product.price,
+        countInStock: product.countInStock
+    });
+    const [errorMessage, setErrorMessage] = useState('');
+    const {userInfo: {token}} = useSelector((store: RootState) => store.userLogin);
+    const {id} = useParams();
+
     const {
         handleSubmit,
         register,
@@ -26,12 +43,11 @@ export const AddProduct = () => {
         formState: {
             errors: {productName, description, price, countInStock},
         },
-    } = useForm<AddProduct>();
+    } = useForm<EditProduct>();
 
-    const {userInfo: {token}} = useSelector((store: RootState) => store.userLogin);
 
-    const onSubmit = async ({productName, category, image, description, price, countInStock}: AddProduct) => {
-        const {name} = image[0];
+    const onSubmit = async ({productName, description, price, countInStock, image, category}: EditProduct) => {
+        const {name} = image[0] ?? product.image;
         try {
             setIsOpen(true)
             setTimeout(() => {
@@ -39,7 +55,7 @@ export const AddProduct = () => {
                 reset();
             }, 1000)
 
-            await api.post('/products', ({productName, category, name, description, price, countInStock}), {
+            await api.put(`/products/${id}`, {productName, description, price, name, countInStock, category}, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token} `,
@@ -50,20 +66,35 @@ export const AddProduct = () => {
         }
     }
 
+    const updateForm = (key: string, value: string | number) => {
+        setForm((form) => ({
+            ...form,
+            [key]: value,
+        }))
+    }
+
+    const updatedImage = (value: any) => {
+        setForm((form) => ({
+            ...form,
+            image: value.name
+        }))
+    }
+
     return (
-        <AddProductContainer>
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+        <>
             {isOpen &&
                 <MessageContainer>
-                    <p>Produkt dodano!</p>
+                    <p>Produkt zedytowano!</p>
                 </MessageContainer>}
             <AddProductForm onSubmit={handleSubmit(onSubmit)} noValidate={true}>
-                <h2>Dodaj nowy produkt:</h2>
+                {errorMessage && <p>{errorMessage}</p>}
+                <h2>Edytuj produkt:</h2>
                 <div>
                     <p>Nazwa produktu:</p>
                     <input
                         type="text"
                         placeholder='Nazwa produktu'
+                        value={form.productName}
                         {...register('productName', {
                             required: "Nazwa produktu jest wymagana",
                             maxLength: {
@@ -71,15 +102,21 @@ export const AddProduct = () => {
                                 message: "Nazwa nie może być dłuższa niż 30 znaków"
                             },
                         })}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm('productName', e.target.value)}
                     />
                     {productName && <ErrorMessage>{productName.message}</ErrorMessage>}
                 </div>
                 <div>
                     <p>Kateforia produktu:</p>
-                    <select {...register('category')}>
+                    <select
+                        value={form.category}
+                        {...register('category')}
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) => updateForm('category', e.target.value)}
+                    >
                         {CategorySelectOptions.map(option => (
                             <option
-                                key={option.value}
+                                key=
+                                    {option.value}
                                 value={option.value}>
                                 {option.text}
                             </option>
@@ -88,17 +125,26 @@ export const AddProduct = () => {
                 </div>
                 <div>
                     <p>Zdjęcie produktu:</p>
-                    <input type="file" {...register('image')}/>
+                    <div>
+                        <img src={form.image} alt="zdjecie produktu"/>
+                    </div>
+                    <input
+                        type="file"
+                        {...register('image')}
+                        onChange={(e: any) => updatedImage(e.target.files[0])}
+                    />
                 </div>
                 <div>
                     <p>Opis produktu:</p>
                     <textarea
+                        value={form.description}
                         {...register('description', {
                             maxLength: {
                                 value: 800,
                                 message: "Opis nie może być dłuższa niż 800 znaków"
                             }
                         })}
+                        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => updateForm('description', e.target.value)}
                     />
                     {description && <ErrorMessage>{description.message}</ErrorMessage>}
                 </div>
@@ -106,11 +152,15 @@ export const AddProduct = () => {
                     <p>Cena:</p>
                     <input
                         type="number"
+                        value={form.price}
                         min={0}
                         {...register('price', {
                             required: "Cena produktu jest wymagana",
                         })}
-                        placeholder='Cena produktu'/>
+                        placeholder='Cena produktu'
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm('price', e.target.value)}
+                    />
+
                     {price && <ErrorMessage>{price.message}</ErrorMessage>}
                 </div>
                 <div>
@@ -118,15 +168,17 @@ export const AddProduct = () => {
                     <input
                         type="number"
                         min={0}
+                        value={form.countInStock}
                         {...register('countInStock', {
                             required: "Ilośc dostępna produktu jest wymagana i musi być liczbą",
                         })}
-                        placeholder='Dostępna ilość'/>
+                        placeholder='Dostępna ilość'
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm('countInStock', e.target.value)}
+                    />
                     {countInStock && <ErrorMessage>{countInStock.message}</ErrorMessage>}
                 </div>
-                <Button text='dodaj produkt'/>
+                <Button text='Edytuj produkt'/>
             </AddProductForm>
-        </AddProductContainer>
-
+        </>
     )
 }
