@@ -30,6 +30,15 @@ export const WriteReviewForm = styled.form`
     background-color: transparent;
     margin-bottom: 2px;
   }
+  & div{
+    background-color: ${appColors.electricRed};
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    margin-bottom: 5px;
+  }
 
   & select {
     width: 100%;
