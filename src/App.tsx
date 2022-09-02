@@ -11,8 +11,7 @@ import {RegisterPage} from "./pages/Register.page";
 import {MyProfilePage} from "./pages/MyProfile.page";
 import {EditMyProfile} from "./components/MyProfile/EditMyProfile/EditMyProfile";
 import {ProtectedRoutes} from "./utils/ProtectedRoutes";
-import {AdminPage} from "./pages/AdminPages/Admin.page";
-import {NotFoundPage} from "./pages/NotFound.page";
+import {NotFoundPage} from "./pages/NotFound/NotFound.page";
 import {AddProductPage} from "./pages/AdminPages/AddProduct.page";
 import {AllProductListPage} from "./pages/AdminPages/AllProductList.page";
 import {EditProductPage} from "./pages/AdminPages/EditProduct.page";
@@ -26,7 +25,6 @@ export const App = () => {
     const content = (
         <Routes>
             <Route element={<ProtectedRoutes/>}>
-                <Route path='/admin' element={<AdminPage/>}/>
                 <Route path='/admin/produkty' element={<AllProductListPage/>}/>
                 <Route path='/admin/produkty/dodaj' element={<AddProductPage/>}/>
                 <Route path='/admin/produkty/edytuj/:id' element={<EditProductPage/>}/>
