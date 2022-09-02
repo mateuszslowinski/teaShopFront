@@ -27,7 +27,6 @@ export const AllProductList = () => {
         setIsOpen(true)
     }
 
-
     const handleConfirmProductClick = async () => {
         try {
             await api.delete(`/products/${removeProductId}`, {
@@ -43,7 +42,6 @@ export const AllProductList = () => {
             setErrorMessage((e as Error).message)
         }
     };
-
 
     return (
         <AllProductListContainer>
