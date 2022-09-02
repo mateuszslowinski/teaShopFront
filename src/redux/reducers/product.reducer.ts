@@ -78,7 +78,6 @@ export const productDetailReducer = (state: DetailsProductState = initialStateFo
 };
 
 //PRODUCT REVIEW
-
 interface ReviewProductInitialState {
     loading: boolean
 }

@@ -9,11 +9,11 @@ import {BasketIcon, HeaderContainer, LinkMenu} from "./Header.style";
 import {UserLoginResponse} from "../../types/user.type";
 
 
+
 export const Header = () => {
     const {userInfo}:UserLoginResponse = useSelector((state: RootState) => (state.userLogin));
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     const handleLogout = () => {
         // @ts-ignore
         dispatch(logout())

@@ -20,11 +20,9 @@ type ReviewForm = {
 export const ReviewSection = () => {
     const {loading, product}: ProductResponseType = useSelector((store: RootState) => store.productDetails);
     const {userInfo}: UserLoginResponse = useSelector((store: RootState) => store.userLogin);
-
     const {reviews} = product;
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     const [form, setForm] = useState<ReviewForm>({
         rating: 1,
         comment: "",
@@ -55,7 +53,7 @@ export const ReviewSection = () => {
         <ReviewSectionContainer>
             {loading ? <LoadingSpinner/> : (
                 <>
-                    <SingleReview reviews={reviews}/>
+                    <SingleReview reviews={reviews} />
                     {userInfo && reviews.find((review) => review.user === userInfo._id)
                         ? <p>Produkt został już oceniony</p>
                         : (
@@ -72,9 +70,11 @@ export const ReviewSection = () => {
                                     ))}
                                 </select>
                                 <p>Opis:</p>
+                                {comment && <div>{comment.message}</div>}
                                 <textarea
                                     value={form.comment}
                                     {...register('comment', {
+                                        required: "Opis jest wymagany",
                                         maxLength: {
                                             value: 300,
                                             message: "Opis nie może być dłuższy niż 300 znaków"
@@ -82,7 +82,7 @@ export const ReviewSection = () => {
                                     })}
                                     onChange={e => updateForm('comment', e.target.value)}
                                 />
-                                {comment && <div>{comment.message}</div>}
+
                                 {userInfo ? <Button text='Wyślij recenzję'/> :
                                     <Button text="Musi się zalogować" disabled/>}
                             </WriteReviewForm>

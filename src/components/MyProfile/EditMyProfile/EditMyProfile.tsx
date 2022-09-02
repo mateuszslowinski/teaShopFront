@@ -24,9 +24,9 @@ export const EditMyProfile = () => {
     const dispatch = useDispatch();
 
     const [errorMessage, setErrorMessage] = useState('');
-    const [form, setForm] = useState({
-        username: "",
-        email: "",
+    const [form, setForm] = useState<EditForm>({
+        username: user.username,
+        email: user.email,
         password: '',
         confirmPassword: ''
     });
@@ -95,11 +95,11 @@ export const EditMyProfile = () => {
                     })}
                     onChange={(e:ChangeEvent<HTMLInputElement>) => updateForm('email', e.target.value)}
                 />
-                <p>Hasło:</p>
+                <p>Nowe hasło:</p>
                 {password && <div>{password.message}</div>}
                 <input
                     type="password"
-                    placeholder="Hasło..."
+                    placeholder="Nowe hasło..."
                     value={form.password}
                     {...register('password',
                         {maxLength: {value: 15, message: "Hasło nie może być dłuższe niż 15 znaków"}})}
@@ -112,7 +112,7 @@ export const EditMyProfile = () => {
                     value={form.confirmPassword}
                     onChange={(e:ChangeEvent<HTMLInputElement>) => updateForm('confirmPassword', e.target.value)}
                 />
-                <Button text='wyślij'/>
+                <Button text='edytuj'/>
             </form>
         </EditMyProfileContainer>
     )

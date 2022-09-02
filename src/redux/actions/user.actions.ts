@@ -50,6 +50,7 @@ interface DispatchInterfaceForLogoutUser {
 type logoutType = () => (dispatch: (arg: DispatchInterfaceForLogoutUser) => DispatchInterfaceForLogoutUser) => void
 
 export const logout: logoutType = () => (dispatch) => {
+    localStorage.removeItem('userInfo');
     dispatch({type: USER_LOGOUT});
     dispatch({type: UserDetailsConstantsAction.USER_DETAILS_RESET})
 }
