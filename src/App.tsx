@@ -12,7 +12,7 @@ import {MyProfilePage} from "./pages/MyProfile.page";
 import {EditMyProfile} from "./components/MyProfile/EditMyProfile/EditMyProfile";
 import {ProtectedRoutes} from "./utils/ProtectedRoutes";
 import {AdminPage} from "./pages/AdminPages/Admin.page";
-import {NotFoundPage} from "./pages/NotFound.page";
+import {NotFoundPage} from "./pages/NotFound/NotFound.page";
 import {AddProductPage} from "./pages/AdminPages/AddProduct.page";
 import {AllProductListPage} from "./pages/AdminPages/AllProductList.page";
 import {EditProductPage} from "./pages/AdminPages/EditProduct.page";
