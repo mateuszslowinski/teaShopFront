@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {ColumnContainer} from "../../../constants/Layouts/FlexDirection.styles";
 import {appColors} from "../../../constants/appColoros";
 
+
 export const EditMyProfileContainer = styled(ColumnContainer)`
   width: 100%;
   height: 70%;
@@ -9,7 +10,8 @@ export const EditMyProfileContainer = styled(ColumnContainer)`
   overflow: hidden;
   border-radius: 20px;
   background-color: ${appColors.iceCold};
-  
+
+
   & p {
     background-color: transparent;
     margin-top: 5px;
@@ -17,8 +19,8 @@ export const EditMyProfileContainer = styled(ColumnContainer)`
     margin-left: 5px;
     color: ${appColors.primary}
   }
- 
-  & div{ 
+
+  & div {
     font-size: 1.6rem;
     background-color: ${appColors.electricRed};
     color: ${appColors.primary};
@@ -27,8 +29,8 @@ export const EditMyProfileContainer = styled(ColumnContainer)`
     margin-bottom: 5px;
     border-radius: 10px;
   }
-  
-  & h2{
+
+  & h2 {
     font-size: 2.5rem;
     color: ${appColors.primary};
     background-color: ${appColors.iceCold};
@@ -37,28 +39,43 @@ export const EditMyProfileContainer = styled(ColumnContainer)`
     margin-bottom: 20px;
     text-align: center;
   }
-  & form{
+
+  & form {
     display: flex;
     background-color: ${appColors.grandpaOrange};
     flex-direction: column;
     padding: 40px;
     border-radius: 20px;
   }
-  & input{
+
+  & input {
     border-radius: 10px;
     padding: 5px;
     font-size: 1.5rem;
     background-color: ${appColors.secondary};
-    
-    &:focus{
+
+    &:focus {
       border: 1px solid ${appColors.primary};
     }
   }
-  
+
   & Button {
     background-color: ${appColors.iceCold};
     border-radius: 20px;
     margin-top: 15px;
     font-size: 1.8rem;
+  }
+`
+
+export const MessageContainer = styled.div`
+  position: absolute;
+  background-color: lightgreen;
+  border-radius: 10px;
+  
+  & p {
+    background-color: lightgreen;
+    font-size: 1.8rem;
+    color: ${appColors.primary};
+    padding: 20px;
   }
 `
