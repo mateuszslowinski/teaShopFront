@@ -8,17 +8,18 @@ import {useDispatch, useSelector} from "react-redux";
 import {addToCart, removeFromCart} from "../../redux/actions/cart.actions";
 import {RootState} from "../../redux/store";
 import {NavLink} from "react-router-dom";
+import {DeliveryTypeResponse} from "../../types/cart.types";
 
-const DELIVER_PRICE = 7.99;
+export const DELIVER_PRICE = 7.99;
 
 export const Cart = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
 
     const quantity = window.location.search ? Number(window.location.search.split('=')[1]) : 1
-    const cart = useSelector((store: RootState) => store.cart)
+    const {cartItems}:DeliveryTypeResponse = useSelector((store: RootState) => store.cart)
 
-    const {cartItems} = cart;
+
     const totalProductPrice = cartItems.reduce((prev, curr) => prev + curr.quantity * curr.price, 0).toFixed(2);
     const totalPrice = (Number(totalProductPrice) + DELIVER_PRICE).toFixed(2);
 
@@ -88,7 +89,7 @@ export const Cart = () => {
                             <h4>Wartość do zapłaty: </h4>
                             <p>{totalPrice} PLN</p>
                         </div>
-                        <Button text='Przejdź do kasy'/>
+                       <NavLink to='/adres'><Button text='Przejdź do kasy'/></NavLink>
                         <NavLink to='/produkty'><Button text="Wróc do zakupów"/></NavLink>
                     </Order>
                 </CartContainer>

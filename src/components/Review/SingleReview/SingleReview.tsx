@@ -30,7 +30,7 @@ export const SingleReview = ({reviews}: Props) => {
 
     const handleRemoveComment = async ({_id, user, rating}: reviewType) => {
         try {
-             await api.put(`review/${id}`, {productId: user, review_id: _id, rating}, {
+             await api.put(`reviews/${id}`, {productId: user, review_id: _id, rating}, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token} `,

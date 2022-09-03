@@ -79,7 +79,7 @@ export const createProductReview: createProductReviewType = (productId, review) 
             },
         };
 
-        await api.post(`/review/${productId}`, review, config);
+        await api.post(`/reviews/${productId}`, review, config);
         dispatch({type: ReviewProductConstantsAction.PRODUCT_REVIEW_SUCCESS});
 
     } catch (e: any) {
