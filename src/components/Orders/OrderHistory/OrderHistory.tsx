@@ -15,12 +15,18 @@ moment.locale('pl')
 export const OrderHistory = () => {
     const [orders, setOrders] = useState<OrderTypeResponse[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const {userInfo: {token}} = useSelector((store: RootState) => store.userLogin);
     const {userInfo} = useSelector((state: RootState) => state.userLogin);
     const {_id} = userInfo;
 
     useEffect(() => {
         (async () => {
-            const res = await api.get(`/orders/user/${_id}`);
+            const res = await api.get(`/orders/user/${_id}`,{
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token} `,
+                },
+            });
             setOrders(res.data);
             setLoading(false)
         })()
