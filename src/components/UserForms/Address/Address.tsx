@@ -8,7 +8,7 @@ import {Button} from "../../../Commons/Button/Button";
 import {LoginPage} from "../../../pages/Login.page";
 import {DeliveryType, DeliveryTypeResponse} from "../../../types/cart.types";
 import {ErrorMessage, FormContainer} from "./Address.styles";
-import {Order} from "../../Order/Order";
+import {ConfirmOrder} from "../../Orders/ConfirmOrder/ConfirmOrder";
 
 
 export const Address = () => {
@@ -29,7 +29,7 @@ export const Address = () => {
         dispatch(addDeliveryAddress({name, street, buildingNumber, zipCode, city}))
         navigate('/zamowienie')
     }
-    if (deliveryAddress) return <Order/>
+    if (deliveryAddress) return <ConfirmOrder/>
     return (
         <>
             {

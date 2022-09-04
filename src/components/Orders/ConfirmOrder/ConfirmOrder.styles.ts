@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import {ColumnContainer, RowContainer} from "../../constants/Layouts/FlexDirection.styles";
-import {appColors} from "../../constants/appColoros";
+import {ColumnContainer, RowContainer} from "../../../constants/Layouts/FlexDirection.styles";
+import {appColors} from "../../../constants/appColoros";
 
 export const OrderContainer = styled(RowContainer)`
   gap: 20px;
@@ -41,7 +41,6 @@ export const DetailsProduct = styled(RowContainer)`
   }
 `
 
-
 export const UserDetailsContainer = styled(ColumnContainer)`
   background-color: ${appColors.dimBlue};
   padding: 20px;
@@ -58,9 +57,7 @@ export const UserDetailsContainer = styled(ColumnContainer)`
     background-color: transparent;
     font-size: 1.5rem;
   }
-
-
-
+  
   & Button {
     width: 100%;
     margin: 5px 0 0;
@@ -91,7 +88,6 @@ export const DeliveryContainer = styled(ColumnContainer)`
   & h3 {
     font-size: 2rem;
     margin-bottom: 10px;
-
   }
 
   & p {

@@ -1,6 +1,6 @@
 import React from "react";
-import {Order} from "../components/Order/Order";
+import {ConfirmOrder} from "../components/Orders/ConfirmOrder/ConfirmOrder";
 
 export const OrderPage = () => (
-    <Order/>
+    <ConfirmOrder/>
 )

@@ -6,20 +6,20 @@ import {
     OrderContainer,
     ProductsContainer,
     UserDetailsContainer
-} from "./Order.styles";
-import {RootState} from "../../redux/store";
-import {LoginPage} from "../../pages/Login.page";
-import {DeliveryTypeResponse} from "../../types/cart.types";
-import {Button} from '../../Commons/Button/Button';
-import {DELIVER_PRICE} from "../Cart/Cart";
-import {createOrder} from "../../redux/actions/order.actions";
+} from "./ConfirmOrder.styles";
+import {RootState} from "../../../redux/store";
+import {DeliveryTypeResponse} from "../../../types/cart.types";
+import {Button} from '../../../Commons/Button/Button';
+import {DELIVER_PRICE} from "../../Cart/Cart";
+import {createOrder} from "../../../redux/actions/order.actions";
 import {useNavigate} from "react-router-dom";
-import {OrderConstantsAction} from "../../redux/constatns/order.constants";
+import {OrderConstantsAction} from "../../../redux/constatns/order.constants";
+import {LoadingSpinner} from "../../../Commons/LoadingSpinner/LoadingSpinner";
 
-export const Order = () => {
+export const ConfirmOrder = () => {
     const dispatch = useDispatch()
     const {userInfo} = useSelector((state: RootState) => state.userLogin);
-    const {success} = useSelector((state: RootState) => state.createOrder);
+    const {success, loading} = useSelector((state: RootState) => state.createOrder);
     const {
         cartItems,
         deliveryAddress
@@ -37,15 +37,15 @@ export const Order = () => {
 
     const handleOrderConfirmClick = () => {
         // @ts-ignore
-        dispatch(createOrder({user:userInfo._id,cartItems, deliveryAddress, totalPrice}))
+        dispatch(createOrder({user: userInfo._id, cartItems, deliveryAddress, totalPrice}))
     };
-
     const {name, zipCode, city, street, buildingNumber} = deliveryAddress;
-    console.log(cartItems)
+
+
     return (
         <>
             {
-                userInfo ? (
+                loading ? (
                     <OrderContainer>
                         <ProductsContainer>
                             {cartItems.map((product) => (
@@ -77,7 +77,7 @@ export const Order = () => {
                             <Button text='zamawiam' onClick={handleOrderConfirmClick}/>
                         </UserDetailsContainer>
                     </OrderContainer>
-                ) : <LoginPage/>
+                ) : <LoadingSpinner/>
             }
         </>
     )
