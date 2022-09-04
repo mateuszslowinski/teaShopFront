@@ -36,7 +36,7 @@ export const OrderHistory = () => {
     return (
         <OrderHistoryContainer>
             <h3>Historia twoich zamówień:</h3>
-            {orders.length === 0 ? <h4>Brak zamówień</h4> : (
+            {orders.length === 0 ? <h4>Brak dotychczas zamówień</h4> : (
                 orders.map((order) => (
                     <OrderContainer key={order._id}>
                         <div>

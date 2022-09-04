@@ -19,6 +19,7 @@ import {AllUsersListPage} from "./pages/AdminPages/AllUsersList.page";
 import {UserAddressPage} from "./pages/UserAddress.page";
 import {OrderPage} from "./pages/Order.page";
 import {OrderHistoryPage} from "./pages/OrderHistory.page";
+import {SingleOrderDetailsPage} from "./pages/SingleOrderDetails.page";
 
 export const App = () => {
 
@@ -39,6 +40,7 @@ export const App = () => {
             <Route path='konto' element={<MyProfilePage/>}/>
             <Route path='/konto/edytuj' element={<EditMyProfile/>}/>
             <Route path='/konto/zamowienia' element={<OrderHistoryPage/>}/>
+            <Route path='/konto/zamowienia/:id' element={<SingleOrderDetailsPage/>}/>
             <Route path='/produkty' element={<ProductsPage/>}/>
             <Route path='/produkty/:id' element={<SingleProductsPage/>}/>
             <Route path="/koszyk" element={<CartPage/>}/>
