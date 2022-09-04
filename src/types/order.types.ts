@@ -7,3 +7,9 @@ export type OrderType = {
     price:number
 }
 
+export interface OrderTypeResponse extends OrderType {
+    _id:string
+    user:string
+    createdAt:Date
+    updatedAt:Date
+}
