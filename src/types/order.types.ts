@@ -2,14 +2,30 @@ import {ProductTypes} from "./product.types";
 import {DeliveryType} from "./cart.types";
 
 export type OrderType = {
-    orderProduct:ProductTypes
-    deliveryAddress:DeliveryType
-    price:number
+    orderProduct: ProductTypes
+    deliveryAddress: DeliveryType
+    price: number
+}
+export type orderItemsType = {
+    "name": string,
+    "price": number,
+    "quantity": number,
+    "image": string,
+    "_id":string
 }
 
-export interface OrderTypeResponse extends OrderType {
-    _id:string
-    user:string
-    createdAt:Date
-    updatedAt:Date
+export type userType ={
+    "_id": string,
+    "username": string,
+    "email": string
+}
+
+export interface OrderTypeResponse {
+    _id: string
+    user: userType
+    orderItems: orderItemsType[]
+    shippingAddress: DeliveryType
+    price: number
+    createdAt: string
+    updatedAt: string
 }
