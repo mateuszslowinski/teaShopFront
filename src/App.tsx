@@ -22,11 +22,12 @@ import {OrderHistoryPage} from "./pages/OrderHistory.page";
 import {SingleOrderDetailsPage} from "./pages/SingleOrderDetails.page";
 import {SearchPage} from "./pages/Search.page";
 import {UserProtectedRoutes} from "./utils/UserProtectedRoutes";
+import {Footer} from "./components/Footer/Footer";
 
 export const App = () => {
 
     const header = <Header/>
-    const footer = (<div>footer</div>)
+    const footer = <Footer/>
 
     const content = (
         <Routes>

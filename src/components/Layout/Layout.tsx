@@ -1,5 +1,5 @@
-import { ReactNode } from "react"
-import { PageContainer } from "../../constants/Layouts/PageContainer.styles"
+import {ReactNode} from "react"
+import {LayoutContainer, PageContainer} from "../../constants/Layouts/PageContainer.styles"
 
 interface Props {
     header: ReactNode
@@ -8,10 +8,10 @@ interface Props {
 }
 
 export const Layout = ({header, content, footer}: Props) => (
-    <>
+    <LayoutContainer>
         <div>{header}</div>
         <PageContainer>{content}</PageContainer>
         <div>{footer}</div>
-    </>
+    </LayoutContainer>
 
 )
