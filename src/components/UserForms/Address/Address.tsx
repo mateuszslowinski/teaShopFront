@@ -5,14 +5,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {addDeliveryAddress} from "../../../redux/actions/cart.actions";
 import {RootState} from "../../../redux/store";
 import {Button} from "../../../Commons/Button/Button";
-import {LoginPage} from "../../../pages/Login.page";
 import {DeliveryType, DeliveryTypeResponse} from "../../../types/cart.types";
 import {ErrorMessage, FormContainer} from "./Address.styles";
 import {ConfirmOrder} from "../../Orders/ConfirmOrder/ConfirmOrder";
 
 
 export const Address = () => {
-    const {userInfo} = useSelector((state: RootState) => state.userLogin);
+
     const {deliveryAddress}: DeliveryTypeResponse = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -29,11 +28,11 @@ export const Address = () => {
         dispatch(addDeliveryAddress({name, street, buildingNumber, zipCode, city}))
         navigate('/zamowienie')
     }
-    if (deliveryAddress) return <ConfirmOrder/>
+
     return (
         <>
             {
-                userInfo ? (
+                deliveryAddress ? (
                     <FormContainer onSubmit={handleSubmit(onSubmit)} noValidate={true}>
                         <h2>Adres dostawy:</h2>
                         <label>
@@ -94,7 +93,7 @@ export const Address = () => {
                         </label>
                         <Button text="Potwierdź"/>
                     </FormContainer>
-                ) : <LoginPage/>
+                ) : <ConfirmOrder/>
             }
         </>
     )

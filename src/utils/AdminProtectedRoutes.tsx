@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import { useAuth } from "./auth";
+import { useAdminAuth } from "./auth";
 import {NotAuthorized} from "../pages/NotAuthorized/NotAuthorized";
 
-export const ProtectedRoutes = () => {
-    const isAuth = useAuth();
+export const AdminProtectedRoutes = () => {
+    const isAuth = useAdminAuth();
     return isAuth ? <Outlet /> : <NotAuthorized />;
 };
