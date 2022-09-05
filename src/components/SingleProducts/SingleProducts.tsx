@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import {DetailsContainer, ImgProduct, ProductDetailsContainer, RowDetails, StockDetails} from "./SingleProducts.styles";
-import img from '../../assets/1.png'
 import {useParams} from 'react-router';
 import {Button} from '../../Commons/Button/Button';
 import {NavLink} from "react-router-dom";
@@ -36,8 +35,9 @@ export const SingleProducts = () => {
                 ) : (
                     <>
                         <ImgProduct
-                            src={img}
-                            alt="product"/>
+                            src={`/images/${product.image}`}
+                            alt={product.name}
+                           />
                         <DetailsContainer>
                             <h2>{product.name}</h2>
                             <p>{product.description}</p>

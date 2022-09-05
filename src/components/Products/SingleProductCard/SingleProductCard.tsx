@@ -1,22 +1,20 @@
 import React from 'react'
 import StarRatings from "react-star-ratings";
 import {Button} from '../../../Commons/Button/Button';
-import img from '../../../assets/1.png'
-import {ImgProduct, NavLinkCon, ProductCardContainer, RatingRowContainer} from "./SingleProductCard.styles";
 import {appColors} from "../../../constants/appColoros";
 import {ProductTypes} from "../../../types/product.types";
-
+import {ImgProduct, NavLinkCon, ProductCardContainer, RatingRowContainer} from "./SingleProductCard.styles";
 
 interface Props {
     product: ProductTypes
 }
 
 export const SingleProductCard = ({product}: Props) => {
-    const {name, category, rating, numReviews, _id, price} = product
+    const {name, category, rating, numReviews, _id, price, image} = product
 
     return (
         <ProductCardContainer>
-            <ImgProduct src={img} alt="product"/>
+            <ImgProduct src={`/images/${image}`} alt={name}/>
             <h2>{name}</h2>
             <NavLinkCon to={`/kategoria/${category}`}>{category}</NavLinkCon>
             <RatingRowContainer>
@@ -35,7 +33,7 @@ export const SingleProductCard = ({product}: Props) => {
             <div>
                 {price}
                 <p>PLN</p>
-               <NavLinkCon to={`/produkty/${_id}`}><Button text="szczegóły"/></NavLinkCon>
+                <NavLinkCon to={`/produkty/${_id}`}><Button text="szczegóły"/></NavLinkCon>
             </div>
         </ProductCardContainer>
     )
