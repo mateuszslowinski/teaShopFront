@@ -57,7 +57,7 @@ export const ConfirmOrder = () => {
                         <ProductsContainer>
                             {cartItems.map((product) => (
                                 <DetailsProduct key={product._id}>
-                                    <img src={product.image} alt={product.name}/>
+                                    <img  src={`/images/${product.image}`} alt={product.name}/>
                                     <span> Nazwa produktu:<p>{product.name}</p></span>
                                     <span>Ilość:<p>{product.quantity}</p> </span>
                                     <span>Cena:<p>{product.price} PLN</p> </span>

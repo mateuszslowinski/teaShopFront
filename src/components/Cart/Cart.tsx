@@ -2,7 +2,6 @@
 import React, {useEffect} from "react";
 import {CartContainer, DetailsProduct, DetailsProductContainer, ImgProduct, Order} from "./Cart.styles";
 import {Button} from "../../Commons/Button/Button";
-import img from '../../assets/1.png'
 import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart, removeFromCart} from "../../redux/actions/cart.actions";
@@ -51,7 +50,7 @@ export const Cart = () => {
                             <DetailsProduct key={product._id}>
                                 <div>
                                     <ImgProduct
-                                        src={img}
+                                        src={`/images/${product.image}`}
                                         alt={product.name}/>
                                     <span>
                                        <p>{product.name}</p>

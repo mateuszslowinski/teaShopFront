@@ -44,7 +44,7 @@ export const SingleOrderDetails = () => {
                         <h3>Zamówione produkty:</h3>
                         {order.orderItems.map(item => (
                             <SingleProductContainer key={item._id}>
-                                <img src={item.image} alt={item.name}/>
+                                <img  src={`/images/${item.image}`} alt={item.name}/>
                                 <div>
                                     <span>Nazwa produktu:</span>
                                     <p>{item.name}</p>
