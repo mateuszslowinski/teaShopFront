@@ -20,6 +20,7 @@ import {UserAddressPage} from "./pages/UserAddress.page";
 import {OrderPage} from "./pages/Order.page";
 import {OrderHistoryPage} from "./pages/OrderHistory.page";
 import {SingleOrderDetailsPage} from "./pages/SingleOrderDetails.page";
+import {SearchPage} from "./pages/Search.page";
 
 export const App = () => {
 
@@ -47,6 +48,7 @@ export const App = () => {
             <Route path="/koszyk/:id" element={<CartPage/>}/>
             <Route path="/adres" element={<UserAddressPage/>}/>
             <Route path="/zamowienie" element={<OrderPage/>}/>
+            <Route path='/wyszukaj/:term' element={<SearchPage/>}/>
             <Route path="*" element={<NotFoundPage/>}/>
         </Routes>
     )
