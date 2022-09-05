@@ -1,32 +1,29 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {getListProducts} from "../../redux/actions/product.actions";
-import {RootState} from "../../redux/store";
-import {useParams} from "react-router-dom";
+import React, { useState} from 'react';
 import {SingleProductCard} from "../Products/SingleProductCard/SingleProductCard";
 import {LoadingSpinner} from "../../Commons/LoadingSpinner/LoadingSpinner";
 import {ProductTypes} from "../../types/product.types";
 import {SearchContainer, SearchMessage} from "./Search.styles";
+import {Pagination} from "../../Commons/Pagination/Pagination";
+import {ProductsSectionContainer} from "../Products/Products.styles";
 
+interface Props {
+    products: ProductTypes[],
+    term: string,
+    loading: boolean,
+    error: string | undefined,
+}
 
-export const Search = () => {
-    const dispatch = useDispatch();
-    const {term} = useParams();
-    const [filterProducts, setFilterProducts] = useState<ProductTypes[]>([]);
-    const {loading, error, products} = useSelector((store: RootState) => store.productList)
+export const Search = ({products, term, loading, error}: Props) => {
+    const [pageNumber, setPageNumber] = useState<number>(0);
+    const productsPerPage = 3;
+    const pagesVisited = pageNumber * productsPerPage;
+    const pageCount = Math.ceil(products.length / productsPerPage)
 
-    const search = () => {
-        // @ts-ignore
-        dispatch(getListProducts())
-        const newProducts = (products.filter(product => product.name.includes(term as string)))
-            setFilterProducts(newProducts)
-    }
+    const changePage = ({selected}: { selected: number }): void => {
+        setPageNumber(selected);
+    };
 
-    useEffect(() => {
-        search();
-    }, [term])
-
-    if (filterProducts.length === 0) return <SearchMessage>Brak wyników wyszukiwania!</SearchMessage>
+    if (products.length === 0) return <SearchMessage>Brak wyników wyszukiwania!</SearchMessage>
     return (
         <SearchContainer>
             <h2>Wyniki wyszukiwania dla {term}:</h2>
@@ -35,8 +32,15 @@ export const Search = () => {
                 : error
                     ? <p>Error: {error}</p>
                     : (
-                        filterProducts.map((product: ProductTypes) => (
-                            <SingleProductCard key={product.name} product={product}/>))
+                        <>
+                            <ProductsSectionContainer>
+                                {
+                                    products.slice(pagesVisited, pagesVisited + productsPerPage).map((product: ProductTypes) => (
+                                        <SingleProductCard key={product._id} product={product}/>))
+                                }
+                            </ProductsSectionContainer>
+                            <Pagination pageCount={pageCount} onChange={changePage}/>
+                        </>
                     )
             }
         </SearchContainer>
