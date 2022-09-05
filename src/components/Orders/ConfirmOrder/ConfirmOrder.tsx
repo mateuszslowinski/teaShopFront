@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {
     DeliveryContainer,
-    DetailsProduct,
+    DetailsProduct, Message,
     OrderContainer,
     ProductsContainer,
     UserDetailsContainer
@@ -18,6 +18,7 @@ import {LoadingSpinner} from "../../../Commons/LoadingSpinner/LoadingSpinner";
 
 export const ConfirmOrder = () => {
     const dispatch = useDispatch()
+    const [isOpen, setIsOpen] = useState(false);
     const {userInfo} = useSelector((state: RootState) => state.userLogin);
     const {success, loading} = useSelector((state: RootState) => state.createOrder);
     const {
@@ -31,7 +32,11 @@ export const ConfirmOrder = () => {
     useEffect(() => {
         if (success) {
             dispatch({type: OrderConstantsAction.ORDER_RESET})
-            navigate('/')
+            setIsOpen(true)
+            setTimeout(() => {
+                setIsOpen(false)
+                navigate('/produkty')
+            }, 2000)
         }
     }, [dispatch, success])
 
@@ -45,8 +50,11 @@ export const ConfirmOrder = () => {
     return (
         <>
             {
-                loading ? (
+                loading ? <LoadingSpinner/> : (
                     <OrderContainer>
+                        {isOpen && <Message>
+                            <p> Zamówienie zostało zrealizowane pomyślnie!</p>
+                        </Message>}
                         <ProductsContainer>
                             {cartItems.map((product) => (
                                 <DetailsProduct key={product._id}>
@@ -77,7 +85,7 @@ export const ConfirmOrder = () => {
                             <Button text='zamawiam' onClick={handleOrderConfirmClick}/>
                         </UserDetailsContainer>
                     </OrderContainer>
-                ) : <LoadingSpinner/>
+                )
             }
         </>
     )

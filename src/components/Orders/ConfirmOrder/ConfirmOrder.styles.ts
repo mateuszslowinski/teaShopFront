@@ -40,11 +40,27 @@ export const DetailsProduct = styled(RowContainer)`
     background-color: transparent;
   }
 `
+export const Message = styled.div`
+  position: absolute;
+  padding: 50px;
+  width: 100%;
+  height: 50%;
+  
+  
+  & p {
 
+    background-color: ${appColors.deepGreen};
+    color: ${appColors.secondary};
+    font-size: 2.4rem;
+    padding: 20px;
+    text-align: center;
+  }
+
+`
 export const UserDetailsContainer = styled(ColumnContainer)`
   background-color: ${appColors.dimBlue};
   padding: 20px;
-  
+
   & div {
     display: flex;
     justify-content: space-between;
@@ -57,7 +73,7 @@ export const UserDetailsContainer = styled(ColumnContainer)`
     background-color: transparent;
     font-size: 1.5rem;
   }
-  
+
   & Button {
     width: 100%;
     margin: 5px 0 0;
