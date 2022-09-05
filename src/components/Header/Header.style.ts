@@ -34,14 +34,11 @@ export const HeaderContainer = styled(ColumnContainer)`
     background-color: transparent;
   }
 
-  & div {
+  & div,label,form {
     margin: 5px;
     background-color: transparent;
   }
-
-  & label {
-    background-color: transparent;
-  }
+  
 
   & input {
     margin-right: 5px;

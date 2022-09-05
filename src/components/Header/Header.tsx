@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
@@ -9,9 +9,9 @@ import {BasketIcon, HeaderContainer, LinkMenu} from "./Header.style";
 import {UserLoginResponse} from "../../types/user.type";
 
 
-
 export const Header = () => {
-    const {userInfo}:UserLoginResponse = useSelector((state: RootState) => (state.userLogin));
+    const [term, setTerm] = useState('');
+    const {userInfo}: UserLoginResponse = useSelector((state: RootState) => (state.userLogin));
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleLogout = () => {
@@ -19,6 +19,11 @@ export const Header = () => {
         dispatch(logout())
         navigate('/zaloguj')
     }
+
+    const search = (e:any) => {
+        e.preventDefault();
+        navigate(`/wyszukaj/${term}`)
+    };
 
     return (
         <HeaderContainer>
@@ -31,10 +36,17 @@ export const Header = () => {
                 </li>
             </ul>
             <div>
-                <label>
-                    <input placeholder="Szukaj..." type="text"/>
-                    <Button text="szukaj"/>
-                </label>
+                <form onSubmit={search}>
+                    <input
+                        placeholder="Szukaj..."
+                        type="text"
+                        required
+                        onChange={e => setTerm(e.target.value)}
+                    />
+                    <Button
+                        text="szukaj"
+                    />
+                </form>
             </div>
             <RowContainer>
                 {userInfo ? (
