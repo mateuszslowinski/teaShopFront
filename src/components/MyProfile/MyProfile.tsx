@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import {IoCreate} from 'react-icons/io5';
-import {MdOutlineReviews} from 'react-icons/md'
+import {VscPreview} from 'react-icons/vsc'
 import {ButtonBox, DetailsContainer, MyProfileContainer} from "./MyProfile.styles";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
@@ -9,10 +9,11 @@ import moment from "moment";
 import 'moment/locale/pl'
 import {UserDetailsResponse, UserLoginResponse} from "../../types/user.type";
 import {getUserDetails} from "../../redux/actions/user.actions";
-import {IoMdAdd,IoIosListBox} from 'react-icons/io'
+import {IoMdAdd, IoIosListBox} from 'react-icons/io'
+import {TbUserSearch} from 'react-icons/tb'
+import {SiShopify} from 'react-icons/si'
 
 moment.locale('pl')
-
 
 export const MyProfile = () => {
     const dispatch = useDispatch();
@@ -39,18 +40,18 @@ export const MyProfile = () => {
                 </NavLink>
                 {isAdmin ? (
                     <>
-                    <NavLink to='/admin/produkty/dodaj'>
-                        <ButtonBox>
-                            <IoMdAdd/>
-                            <p>Dodaj produkt</p>
-                        </ButtonBox>
-                    </NavLink>
-                    <NavLink to='/admin/uzytkownicy'>
-                        <ButtonBox>
-                            <MdOutlineReviews/>
-                            <p>Lista uzytkowników</p>
-                        </ButtonBox>
-                    </NavLink>
+                        <NavLink to='/admin/produkty/dodaj'>
+                            <ButtonBox>
+                                <IoMdAdd/>
+                                <p>Dodaj produkt</p>
+                            </ButtonBox>
+                        </NavLink>
+                        <NavLink to='/admin/uzytkownicy'>
+                            <ButtonBox>
+                                <TbUserSearch/>
+                                <p>Lista uzytkowników</p>
+                            </ButtonBox>
+                        </NavLink>
                         <NavLink to='/admin/produkty'>
                             <ButtonBox>
                                 <IoIosListBox/>
@@ -59,12 +60,20 @@ export const MyProfile = () => {
                         </NavLink>
                     </>
                 ) : (
-                    <NavLink to='/konto/recenzje'>
-                        <ButtonBox>
-                            <MdOutlineReviews/>
-                            <p>Recenzje</p>
-                        </ButtonBox>
-                    </NavLink>
+                    <>
+                        <NavLink to='/konto/recenzje'>
+                            <ButtonBox>
+                                <VscPreview/>
+                                <p>Recenzje</p>
+                            </ButtonBox>
+                        </NavLink>
+                        <NavLink to='/konto/zamowienia'>
+                            <ButtonBox>
+                                <SiShopify/>
+                                <p>Zamówienia</p>
+                            </ButtonBox>
+                        </NavLink>
+                    </>
                 )}
 
             </DetailsContainer>

@@ -9,8 +9,8 @@ export type ProductTypes = {
     numReviews: number,
     price: number,
     countInStock: number
-    createdAt: Date,
-    updatedAt: Date,
+    createdAt: string,
+    updatedAt: string,
 }
 export type ProductResponseType = {
     product: ProductTypes,
