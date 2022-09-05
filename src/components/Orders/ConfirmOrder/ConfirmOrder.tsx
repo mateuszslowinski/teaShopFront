@@ -18,18 +18,17 @@ import {LoadingSpinner} from "../../../Commons/LoadingSpinner/LoadingSpinner";
 
 export const ConfirmOrder = () => {
     const dispatch = useDispatch()
+    const [loading,setLoading]= useState(true)
     const [isOpen, setIsOpen] = useState(false);
     const {userInfo} = useSelector((state: RootState) => state.userLogin);
-    const {success, loading} = useSelector((state: RootState) => state.createOrder);
-    const {
-        cartItems,
-        deliveryAddress
-    }: DeliveryTypeResponse = useSelector((state: RootState) => state.cart);
+    const {success} = useSelector((state: RootState) => state.createOrder);
+    const {cartItems, deliveryAddress}: DeliveryTypeResponse = useSelector((state: RootState) => state.cart);
     const navigate = useNavigate();
     const totalProductPrice = cartItems.reduce((prev, curr) => prev + curr.quantity * curr.price, 0).toFixed(2);
     const totalPrice = (Number(totalProductPrice) + DELIVER_PRICE).toFixed(2);
 
     useEffect(() => {
+        setLoading(false)
         if (success) {
             dispatch({type: OrderConstantsAction.ORDER_RESET})
             setIsOpen(true)
@@ -46,11 +45,11 @@ export const ConfirmOrder = () => {
     };
     const {name, zipCode, city, street, buildingNumber} = deliveryAddress;
 
-
     return (
         <>
-            {
-                loading ? <LoadingSpinner/> : (
+            {loading
+                ? <LoadingSpinner/>
+                : (
                     <OrderContainer>
                         {isOpen && <Message>
                             <p> Zamówienie zostało zrealizowane pomyślnie!</p>
@@ -85,8 +84,7 @@ export const ConfirmOrder = () => {
                             <Button text='zamawiam' onClick={handleOrderConfirmClick}/>
                         </UserDetailsContainer>
                     </OrderContainer>
-                )
-            }
+            ) }
         </>
     )
 }
