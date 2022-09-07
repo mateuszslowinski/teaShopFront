@@ -7,10 +7,13 @@ import {Button} from "../../Commons/Button/Button";
 import {RowContainer} from "../../constants/Layouts/FlexDirection.styles";
 import {BasketIcon, HeaderContainer, LinkMenu} from "./Header.style";
 import {UserLoginResponse} from "../../types/user.type";
+import {CategorySelectOptions} from "../../constants/Form/categorySelectOptions";
+import {AiOutlineArrowDown} from 'react-icons/ai'
 
 
 export const Header = () => {
     const [term, setTerm] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
     const {userInfo}: UserLoginResponse = useSelector((state: RootState) => (state.userLogin));
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -20,19 +23,39 @@ export const Header = () => {
         navigate('/zaloguj')
     }
 
-    const search = (e:any) => {
+    const search = (e: any) => {
         e.preventDefault();
         navigate(`/wyszukaj/${term}`)
     };
 
     return (
-        <HeaderContainer>
+        <HeaderContainer isOpen={isOpen}>
             <ul>
                 <li>
                     <LinkMenu to="/">Strona główna</LinkMenu>
                 </li>
                 <li>
                     <LinkMenu to="produkty">Produkty</LinkMenu>
+                </li>
+
+                <li onClick={() => setIsOpen(!isOpen)}>
+                    <button>Kategorie</button>
+                    <AiOutlineArrowDown/>
+                    {isOpen && (
+                        <div>
+
+                            {
+                                CategorySelectOptions.map(link => (
+                                    <li>
+                                        <LinkMenu to={`kategoria/${link.value}`}>{link.text}</LinkMenu>
+                                    </li>
+                                ))
+                            }
+                        </div>
+
+                    )
+                    }
+
                 </li>
             </ul>
             <div>
