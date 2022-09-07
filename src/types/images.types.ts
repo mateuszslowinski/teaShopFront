@@ -1,4 +1,5 @@
 export type homeSlidesType = {
-    url:string,
-    title:string
+    url: string,
+    image: string,
+    title: string
 }

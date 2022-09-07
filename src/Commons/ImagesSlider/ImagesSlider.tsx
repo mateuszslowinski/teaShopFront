@@ -42,8 +42,8 @@ export const ImagesSlider = ({slides}: Props) => {
             <ImagesContainer>
                 <BiLeftArrow onClick={goToPrevious}/>
                 <BiRightArrow onClick={goToNext}/>
-                <NavLink to='/konto'><h3>{slides[currentIndex].title}</h3></NavLink>
-                <Images url={`${slides[currentIndex].url}`}/>
+                <NavLink to={`${slides[currentIndex].url}`}><h3>{slides[currentIndex].title}</h3></NavLink>
+                <Images url={`${slides[currentIndex].image}`}/>
             </ImagesContainer>
             <DotContainer index={currentIndex + 1}>
                 {slides.map((slide, index) => (
