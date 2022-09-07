@@ -9,7 +9,7 @@ export const EditMyProfileContainer = styled(ColumnContainer)`
   padding: 40px;
   overflow: hidden;
   border-radius: 20px;
-  background-color: ${appColors.iceCold};
+  
 
 
   & p {
@@ -35,14 +35,14 @@ export const EditMyProfileContainer = styled(ColumnContainer)`
     color: ${appColors.primary};
     background-color: ${appColors.iceCold};
     padding: 15px;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
     text-align: center;
   }
 
   & form {
     display: flex;
-    background-color: ${appColors.grandpaOrange};
+    background-color: ${appColors.dimBlue};
     flex-direction: column;
     padding: 40px;
     border-radius: 20px;
@@ -69,6 +69,11 @@ export const EditMyProfileContainer = styled(ColumnContainer)`
 
 export const MessageContainer = styled.div`
   position: absolute;
+  width: 100%;
+  top: 40%;
+  left: 1%;
+  padding: 40px;
+  text-align: center;
   background-color: lightgreen;
   border-radius: 10px;
   

@@ -2,18 +2,19 @@ import styled from "styled-components";
 import {appColors} from "../../../constants/appColoros";
 
 export const FormContainer = styled.form`
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
   padding: 10px;
-  margin: 40px 0 60px;
+  margin: 30px auto;
   width: 40%;
-  background-color: ${appColors.grandpaOrange};
+  background-color: ${appColors.dimBlue};
   
   & p, input, h2, label {
-    background-color: ${appColors.grandpaOrange};
+    background-color: ${appColors.dimWhite};
     color: ${appColors.primary};
   }
 
@@ -21,10 +22,12 @@ export const FormContainer = styled.form`
     font-size: 2.5rem;
     text-align: center;
     margin: 5px;
+    padding: 5px;
   }
 
   & label {
     margin: 10px;
+    padding: 10px;
   }
 
   & p {

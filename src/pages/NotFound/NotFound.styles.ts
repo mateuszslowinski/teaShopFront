@@ -6,7 +6,7 @@ import {ColumnContainer} from "../../constants/Layouts/FlexDirection.styles";
 export const NotFoundContainer = styled(ColumnContainer)`
   min-width: 100%;
   padding: 20px;
-  background-color: ${appColors.iceCold};
+  background-color: transparent;
 
   & h2, h3, p, a {
     background-color: transparent;

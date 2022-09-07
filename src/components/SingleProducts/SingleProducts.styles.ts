@@ -5,10 +5,9 @@ import {appColors} from "../../constants/appColoros";
 
 export const ProductDetailsContainer = styled(RowContainer)`
   margin: 30px auto;
-  min-height: 50vh;
   width: 100%;
   align-items: flex-start;
-  
+
   ${screenSize.md} {
     justify-content: space-evenly;
     align-items: center;
@@ -25,7 +24,7 @@ export const ProductDetailsContainer = styled(RowContainer)`
     font-size: 1.6rem;
     color: ${appColors.primary};
   }
-  
+
   & span {
     background-color: transparent;
     font-size: 1.6rem;
@@ -45,37 +44,55 @@ export const ImgProduct = styled.img`
 
 export const DetailsContainer = styled(ColumnContainer)`
   align-items: self-start;
-  gap: 30px;
+  padding: 20px;
+
+  & h2 {
+    :first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  & p {
+    padding: 10px;
+  }
 `
 
 export const RowDetails = styled(RowContainer)`
   align-self: flex-start;
-  width: 100%;
+  width: 50%;
+  margin: 0 auto 10px;
   gap: 10px;
+
   & a {
     background-color: transparent;
   }
 `
 
-export const StockDetails = styled(ColumnContainer)`
+export const StockDetails = styled(ColumnContainer) `
   align-self: center;
-  gap: 5px;
   padding: 10px;
   border-radius: 10px;
+  background-color: ${appColors.dimWhite};
   border: 1px solid ${appColors.grandpaOrange};
-  width: 60%;
-
+  text-align: center;
   
-  & select{
+  & :last-of-type p {
+  background-color: ${appColors.deepGreen};
+  color: ${appColors.secondary};
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+  & select {
     border-radius: 4px;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     border: none;
     background-color: ${appColors.grandpaOrange};
     color: ${appColors.primary};
   }
-  
-  & option{
-    font-size: 1.2rem;
+
+  & option {
+    font-size: 1.4rem;
     color: ${appColors.primary};
     background-color: ${appColors.grandpaOrange};
   }

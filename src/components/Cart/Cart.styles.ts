@@ -17,10 +17,10 @@ export const CartContainer = styled(RowContainer)`
 
 
 export const DetailsProductContainer = styled(ColumnContainer)`
-  background-color: ${appColors.grandpaOrange};
+  background-color: ${appColors.dimBlue};
   border-radius: 5px;
   padding: 10px;
-
+  margin-top: 10px;
   align-items: flex-start;
   gap: 10px;
 
@@ -28,7 +28,7 @@ export const DetailsProductContainer = styled(ColumnContainer)`
   & h3, p, div {
     font-size: 1.4rem;
     color: ${appColors.primary};
-    background-color: ${appColors.grandpaOrange};
+    background-color: transparent;
 
   }
 
@@ -41,7 +41,8 @@ export const DetailsProductContainer = styled(ColumnContainer)`
   }
 
   & span {
-
+    padding: 10px;
+    background-color: ${appColors.secondary};
     align-self: flex-start;
 
   }
@@ -81,12 +82,12 @@ export const Order = styled(ColumnContainer)`
   padding: 10px;
   margin: 20px;
   border-radius: 5px;
-  background-color: ${appColors.grandpaOrange};
+  background-color: ${appColors.dimBlue};
 
   & span, p, h3, h4 {
-    background-color: ${appColors.grandpaOrange};
+    background-color: ${appColors.secondary};
     color: ${appColors.primary};
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   & div {
@@ -94,7 +95,8 @@ export const Order = styled(ColumnContainer)`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: ${appColors.grandpaOrange};
+    padding: 10px;
+    background-color: ${appColors.secondary};
 
     :last-of-type {
       border-top: 1px solid ${appColors.primary};
@@ -104,10 +106,12 @@ export const Order = styled(ColumnContainer)`
 
   & p {
     margin-left: 10px;
+
   }
 
   & h3 {
     font-size: 1.8rem;
+    padding: 5px;
     margin-bottom: 10px;
   }
 
@@ -119,5 +123,8 @@ export const Order = styled(ColumnContainer)`
     width: 100%;
     text-align: center;
     background-color: transparent;
+    :first-of-type {
+      margin-top: 10px;
+    }
   }
 `

@@ -10,8 +10,6 @@ export const LayoutContainer = styled.div`
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   max-width: 1400px;
   min-height: calc(100vh - 154px);
   margin: 10px auto;
