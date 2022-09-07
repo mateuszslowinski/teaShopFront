@@ -11,7 +11,7 @@ import {
 } from "./CategoryProduct.styles";
 import {Pagination} from "../../Commons/Pagination/Pagination";
 import {Message} from "../../Commons/Message/Message";
-import {categoryProductDesc} from "../../constants/descriptions";
+import {categoryProductDesc} from "../../constants/descriptions/categoryProduct.descriptions";
 
 export const CategoryProduct = () => {
     const [products, setProducts] = useState([])

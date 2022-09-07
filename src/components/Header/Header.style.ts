@@ -28,18 +28,17 @@ export const HeaderContainer = styled(ColumnContainer)<Props>`
   & ul {
     display: flex;
     margin: 10px;
-
     list-style: none;
     text-align: center;
     background-color: transparent;
 
     & button:first-of-type {
-
       position: relative;
     }
 
     & div:first-of-type {
       position: absolute;
+      z-index: 2;
       transform: translate(-25%, 0);
       background-color: ${appColors.iceCold};
       padding: 5px;
@@ -75,7 +74,6 @@ export const HeaderContainer = styled(ColumnContainer)<Props>`
     transform: rotate(-180deg)
   `}
       }
-    
   }
 
   & li {
@@ -88,8 +86,7 @@ export const HeaderContainer = styled(ColumnContainer)<Props>`
     align-self: flex-start;
     background-color: transparent;
   }
-
-
+  
   & input {
     margin-right: 5px;
     padding: 5px;
@@ -100,7 +97,6 @@ export const HeaderContainer = styled(ColumnContainer)<Props>`
     background-color: ${appColors.secondary};
   }
 `
-
 
 export const LinkMenu = styled(NavLink)`
   background-color: transparent;
@@ -121,10 +117,4 @@ export const BasketIcon = styled(FaShoppingBag)`
   color: ${appColors.primary};
   font-size: 2rem;
   background-color: transparent;
-`
-export const CategoryContainer = styled.div`
-
-  & li {
-    background-color: ${appColors.dimBlue};
-  }
 `
