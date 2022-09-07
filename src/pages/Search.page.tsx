@@ -15,7 +15,7 @@ export const SearchPage = () => {
     const search = () => {
         // @ts-ignore
         dispatch(getListProducts())
-        const newProducts = (products.filter(product => product.name.includes(term as string)))
+        const newProducts = (products.filter(product => product.name.includes(term?.toLowerCase() as string)))
         setFilterProducts(newProducts)
     }
 

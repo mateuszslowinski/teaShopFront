@@ -15,7 +15,7 @@ interface Props {
 
 export const Products = ({products, error, loading}: Props) => {
     const [pageNumber, setPageNumber] = useState<number>(0);
-    const productsPerPage = 2;
+    const productsPerPage = 10;
     const pagesVisited = pageNumber * productsPerPage;
     const pageCount = Math.ceil(products.length / productsPerPage)
 
@@ -36,7 +36,7 @@ export const Products = ({products, error, loading}: Props) => {
                                     <SingleProductCard key={product._id} product={product}/>
                                 ))}
                             </ProductsSectionContainer>
-                            <Pagination pageCount={pageCount} onChange={changePage}/>
+                            {products.length > 0 && <Pagination pageCount={pageCount} onChange={changePage}/>}
                         </ColumnContainer>
                     )
             }

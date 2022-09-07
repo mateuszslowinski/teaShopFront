@@ -31,8 +31,7 @@ export const SingleProductCard = ({product}: Props) => {
             </span>
             </RatingRowContainer>
             <div>
-                {price}
-                <p>PLN</p>
+                <p>{price} PLN</p>
                 <NavLinkCon to={`/produkty/${_id}`}><Button text="szczegóły"/></NavLinkCon>
             </div>
         </ProductCardContainer>

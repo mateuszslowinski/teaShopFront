@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import {IoCreate} from 'react-icons/io5';
-import {VscPreview} from 'react-icons/vsc'
 import {ButtonBox, DetailsContainer, MyProfileContainer} from "./MyProfile.styles";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
@@ -32,12 +31,7 @@ export const MyProfile = () => {
                 <p>Dołączył(a) : {moment(user.createdAt).format('LL')}</p>
             </div>
             <DetailsContainer>
-                <NavLink to='/konto/edytuj'>
-                    <ButtonBox>
-                        <IoCreate/>
-                        <p>Edytuj dane</p>
-                    </ButtonBox>
-                </NavLink>
+
                 {isAdmin ? (
                     <>
                         <NavLink to='/admin/produkty/dodaj'>
@@ -61,12 +55,13 @@ export const MyProfile = () => {
                     </>
                 ) : (
                     <>
-                        <NavLink to='/konto/recenzje'>
+                        <NavLink to='/konto/edytuj'>
                             <ButtonBox>
-                                <VscPreview/>
-                                <p>Recenzje</p>
+                                <IoCreate/>
+                                <p>Edytuj dane</p>
                             </ButtonBox>
                         </NavLink>
+
                         <NavLink to='/konto/zamowienia'>
                             <ButtonBox>
                                 <SiShopify/>
@@ -75,7 +70,6 @@ export const MyProfile = () => {
                         </NavLink>
                     </>
                 )}
-
             </DetailsContainer>
         </MyProfileContainer>
     )

@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {getOneProduct} from "../../redux/actions/product.actions";
 import {ProductResponseType} from "../../types/product.types";
+import { appColors } from '../../constants/appColoros';
 
 
 
@@ -38,39 +39,39 @@ export const SingleProducts = () => {
                             src={`/images/${product.image}`}
                             alt={product.name}
                            />
+                        <StockDetails>
+                            <RowDetails>
+                                <p>Cena:</p>
+                                <span>{product.price} PLN</span>
+                            </RowDetails>
+                            <RowDetails>
+                                <span>Status:</span>
+                                {product.countInStock > 0 ? (
+                                    <>
+                                        <p>Dostępne</p>
+                                        <span>Ilość:</span>
+                                        <select value={quantity}
+                                                onChange={(e) => setQuantity(Number(e.target.value))}>
+                                            {Array.from({length: product.countInStock}, (_, i) => i + 1).map((count: number) => (
+                                                <option
+                                                    key={count}
+                                                    value={count}>
+                                                    {count}
+                                                </option>)
+                                            )}
+                                        </select>
+                                        <NavLink to={`/koszyk/${id}?qty=${quantity}`}><Button
+                                            text="dodaj do koszyka"/></NavLink>
+                                    </>
+                                ) : (
+                                    <p style={{backgroundColor: `${appColors.electricRed}`}}>Brak w sklepie</p>
+                                )}
+                            </RowDetails>
+                        </StockDetails>
                         <DetailsContainer>
                             <h2>{product.name}</h2>
                             <p>{product.description}</p>
-                            <StockDetails>
-                                <RowDetails>
-                                    <p>Cena:</p>
-                                    <span>{product.price} PLN</span>
-                                </RowDetails>
-                                <RowDetails>
-                                    <p>Status:</p>
-                                    {product.countInStock > 0 ? (
-                                        <>
-                                            <span>Dostępne</span>
-                                            <span>Ilość:</span>
-                                            <select value={quantity}
-                                                    onChange={(e) => setQuantity(Number(e.target.value))}>
-                                                {Array.from({length: product.countInStock}, (_, i) => i + 1).map((count: number) => (
-                                                    <option
-                                                        key={count}
-                                                        value={count}>
-                                                        {count}
-                                                    </option>)
-                                                )}
-                                            </select>
-                                            <NavLink to={`/koszyk/${id}?qty=${quantity}`}><Button
-                                                text="dodaj do koszyka"/></NavLink>
-                                        </>
-                                    ) : (
-                                        <span>Brak w sklepie</span>
-                                    )}
 
-                                </RowDetails>
-                            </StockDetails>
                         </DetailsContainer>
                         <ReviewSection />
                     </>
