@@ -1,32 +1,79 @@
-import { NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import {appColors} from "../../constants/appColoros";
 import {ColumnContainer} from "../../constants/Layouts/FlexDirection.styles";
 import {screenSize} from "../../constants/mediaQueries";
 import {FaShoppingBag} from 'react-icons/fa'
 
-
-export const HeaderContainer = styled(ColumnContainer)`
+interface Props {
+  isOpen: boolean
+}
+export const HeaderContainer = styled(ColumnContainer)<Props>`
   width: 100%;
-  background-color: ${appColors.dimBlue};
+  background-color: ${appColors.iceCold};
   border-radius: 10px;
   padding: 5px;
   margin: 20px auto 0;
-  
+
+
   ${screenSize.sm} {
     flex-direction: row;
     justify-content: space-between;
   }
 
   ${screenSize.md} {
-      width: 90%;
+    width: 90%;
   }
-  
+
   & ul {
     display: flex;
     margin: 10px;
     list-style: none;
+    text-align: center;
     background-color: transparent;
+
+    & button:first-of-type {
+      position: relative;
+    }
+
+    & div:first-of-type {
+      position: absolute;
+      z-index: 2;
+      transform: translate(-25%, 0);
+      background-color: ${appColors.iceCold};
+      padding: 5px;
+    }
+
+    & button {
+      border: none;
+      font-size: 1.6rem;
+      background-color: transparent;
+      cursor: pointer;
+      transition: 0.4s;
+
+      &:hover {
+        color: ${appColors.electricRed};
+        border-bottom: 1px solid ${appColors.electricRed};
+      }
+    }
+
+    & svg {
+      margin-left: 3px;
+        cursor: pointer;
+        font-size: 1.4rem;
+        background-color: transparent;
+        transition: 0.3s;
+
+        &:hover {
+          color: ${appColors.electricRed};
+        }
+
+        ${({ isOpen }) =>
+            isOpen &&
+            `
+    transform: rotate(-180deg)
+  `}
+      }
   }
 
   & li {
@@ -34,12 +81,12 @@ export const HeaderContainer = styled(ColumnContainer)`
     background-color: transparent;
   }
 
-  & div,label,form {
+  & div, label, form {
     margin: 5px;
+    align-self: flex-start;
     background-color: transparent;
   }
   
-
   & input {
     margin-right: 5px;
     padding: 5px;
@@ -50,6 +97,7 @@ export const HeaderContainer = styled(ColumnContainer)`
     background-color: ${appColors.secondary};
   }
 `
+
 export const LinkMenu = styled(NavLink)`
   background-color: transparent;
   color: ${appColors.primary};

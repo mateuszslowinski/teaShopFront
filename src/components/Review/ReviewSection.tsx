@@ -83,7 +83,7 @@ export const ReviewSection = () => {
                                     onChange={e => updateForm('comment', e.target.value)}
                                 />
 
-                                {userInfo ? <Button text='Wyślij recenzję'/> :
+                                 {userInfo && userInfo ? <Button text='Wyślij recenzję'/> :
                                     <Button text="Musi się zalogować" disabled/>}
                             </WriteReviewForm>
                         )

@@ -13,9 +13,14 @@ export const AddProductForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 20px 10px;
+  margin: 10px auto;
   border-radius: 10px;
   background-color: ${appColors.dimBlue};
 
+  & img{
+    width: 80px;
+    height: 80px;
+  }
   
   & select, option,textarea,input,p,h2 {
     background-color: ${appColors.grandpaOrange};

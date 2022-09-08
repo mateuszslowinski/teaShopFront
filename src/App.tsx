@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {Home} from './pages/Home';
+import {Home} from './pages/Home/Home';
 import {ProductsPage} from "./pages/Products.page";
 import {SingleProductsPage} from "./pages/SingleProducts.page";
 import {Layout} from "./components/Layout/Layout";
@@ -23,6 +23,7 @@ import {SingleOrderDetailsPage} from "./pages/SingleOrderDetails.page";
 import {SearchPage} from "./pages/Search.page";
 import {UserProtectedRoutes} from "./utils/UserProtectedRoutes";
 import {Footer} from "./components/Footer/Footer";
+import {CategoryProductPage} from "./pages/CategoryProduct.page";
 
 export const App = () => {
 
@@ -52,6 +53,7 @@ export const App = () => {
             <Route path="/rejestracja" element={<RegisterPage/>}/>
             <Route path='/produkty' element={<ProductsPage/>}/>
             <Route path='/produkty/:id' element={<SingleProductsPage/>}/>
+            <Route path='/kategoria/:name' element={<CategoryProductPage/>}/>
             <Route path='/wyszukaj/:term' element={<SearchPage/>}/>
             <Route path="*" element={<NotFoundPage/>}/>
         </Routes>

@@ -19,7 +19,7 @@ export const StyledPaginateContainer = styled.div`
     padding: 10px;
     margin: 8px;
     border-radius: 5px;
-
+    background-color: ${appColors.iceCold};
     color: ${appColors.primary};
     font-size: 2rem;
     cursor: pointer;

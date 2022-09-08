@@ -25,6 +25,10 @@ export const AllUsersListContainer = styled(ColumnContainer)`
 `
 
 export const SingleUserContainer = styled(RowContainer)`
+  border-bottom: 1px solid ${appColors.primary};
+  padding: 5px;
+  width: 35%;
+  margin-bottom: 5px;
   & p {
     background-color: transparent;
     font-size: 1.6rem;

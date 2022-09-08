@@ -17,6 +17,6 @@ export const SearchMessage = styled.div`
   color: ${appColors.primary};
   background-color: transparent;
   padding: 40px;
-  margin: 10px;
+  margin: 10px auto;
   height: 50vh;
 `

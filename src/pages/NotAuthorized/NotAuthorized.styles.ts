@@ -6,7 +6,7 @@ import {ColumnContainer} from "../../constants/Layouts/FlexDirection.styles";
 export const NotAuthorizedContainer= styled(ColumnContainer)`
   min-width: 100%;
   padding: 20px;
-  background-color: ${appColors.backColor};
+  background-color: transparent;
   
   & h2, h3, p, a {
     background-color: transparent;

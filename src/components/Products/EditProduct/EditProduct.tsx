@@ -126,7 +126,7 @@ export const EditProduct = ({product}: Props) => {
                 <div>
                     <p>Zdjęcie produktu:</p>
                     <div>
-                        <img src={form.image} alt="zdjecie produktu"/>
+                        <img src={`/images/${form.image}`} alt="zdjecie produktu"/>
                     </div>
                     <input
                         type="file"

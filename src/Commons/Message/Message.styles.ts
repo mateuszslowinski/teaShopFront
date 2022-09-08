@@ -3,12 +3,10 @@ import {ColumnContainer} from "../../constants/Layouts/FlexDirection.styles";
 import {appColors} from "../../constants/appColoros";
 
 export const MessageContainer = styled(ColumnContainer)`
-  position: absolute;
   width: 60%;
-  top: 15%;
-  height: 50%;
+  height: 50vh;
   border-radius: 10px;
-  margin-top: 30px;
+  margin: 20px;
   background-color: ${appColors.deepGreen};
 
   & p {

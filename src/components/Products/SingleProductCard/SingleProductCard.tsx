@@ -3,7 +3,8 @@ import StarRatings from "react-star-ratings";
 import {Button} from '../../../Commons/Button/Button';
 import {appColors} from "../../../constants/appColoros";
 import {ProductTypes} from "../../../types/product.types";
-import {ImgProduct, NavLinkCon, ProductCardContainer, RatingRowContainer} from "./SingleProductCard.styles";
+import {ImgProduct, ProductCardContainer} from "./SingleProductCard.styles";
+import {NavLink} from "react-router-dom";
 
 interface Props {
     product: ProductTypes
@@ -16,8 +17,8 @@ export const SingleProductCard = ({product}: Props) => {
         <ProductCardContainer>
             <ImgProduct src={`/images/${image}`} alt={name}/>
             <h2>{name}</h2>
-            <NavLinkCon to={`/kategoria/${category}`}>{category}</NavLinkCon>
-            <RatingRowContainer>
+            <NavLink to={`/kategoria/${category}`}>{category}</NavLink>
+            <div>
                 <StarRatings
                     rating={rating}
                     starRatedColor={appColors.electricRed}
@@ -27,13 +28,12 @@ export const SingleProductCard = ({product}: Props) => {
                     name="rating"
                 />
                 <span>
-               {numReviews === 0 ? <p>0 ocen</p> : <p>{numReviews} ocen</p>}
-            </span>
-            </RatingRowContainer>
+                    <p>{numReviews === 0 ? 0 : numReviews} ocen</p>
+                </span>
+            </div>
             <div>
-                {price}
-                <p>PLN</p>
-                <NavLinkCon to={`/produkty/${_id}`}><Button text="szczegóły"/></NavLinkCon>
+                <p>{price} PLN</p>
+                <NavLink to={`/produkty/${_id}`}><Button text="szczegóły"/></NavLink>
             </div>
         </ProductCardContainer>
     )

@@ -5,9 +5,10 @@ import {ColumnContainer, RowContainer} from "../../constants/Layouts/FlexDirecti
 export const MyProfileContainer = styled(ColumnContainer)`
   width: 50%;
   padding: 20px;
-  margin: 30px;
+  margin:30px auto;
   min-height: 60vh;
   text-align: center;
+
 
   & div {
     padding: 30px;
@@ -31,12 +32,14 @@ export const MyProfileContainer = styled(ColumnContainer)`
 
 export const DetailsContainer = styled(RowContainer)`
   margin-top: 40px;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-self: center;
   width: 100%;
   border-radius: 10px;
 
   & a {
     text-decoration: none;
+  
   }
 `
 
