@@ -1,13 +1,13 @@
 import {useEffect} from "react";
 import {getListProducts} from "../../redux/actions/product.actions";
 import {useDispatch, useSelector} from "react-redux";
-import {HomeContainer, ResultsContainer} from "./Home.styles";
+import {HomeContainer, ResultsContainer, } from "./Home.styles";
 import {ImagesSlider} from "../../Commons/ImagesSlider/ImagesSlider";
-import {ImagesForHomeSlides} from "../../constants/images/images";
+import {ImagesForHomeSlides} from "../../constants/sliderImages/sliderImages";
 import {RootState} from "../../redux/store";
 import {SingleProductCard} from "../../components/Products/SingleProductCard/SingleProductCard";
 import {AboutShopDesc} from "../../constants/descriptions/homePage.descriptions";
-
+import {Newsletter} from "../../components/Newsletter/Newsletter";
 
 export const Home = () => {
     const dispatch = useDispatch();
@@ -30,6 +30,7 @@ export const Home = () => {
                     <SingleProductCard product={product}/>
                 ))}
             </ ResultsContainer>
+            <Newsletter/>
         </HomeContainer>
     )
 }
