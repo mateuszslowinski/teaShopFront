@@ -5,11 +5,9 @@ import {BiLeftArrow, BiRightArrow} from 'react-icons/bi';
 import {BsDot} from 'react-icons/bs';
 import { NavLink } from "react-router-dom";
 
-
 interface Props {
     slides: homeSlidesType[],
 }
-
 
 export const ImagesSlider = ({slides}: Props) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,14 +17,6 @@ export const ImagesSlider = ({slides}: Props) => {
         const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
         setCurrentIndex(newIndex);
     };
-
-        useEffect(() => {
-            // setTimeout(
-            //     () =>
-            //         setCurrentIndex((prevIndex) =>
-            //             prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-            //         ), 4000);
-        }, [currentIndex]);
 
     const goToNext = () => {
         const isLastSlide = currentIndex === slides.length - 1;
@@ -38,7 +28,17 @@ export const ImagesSlider = ({slides}: Props) => {
         setCurrentIndex(slideIndex);
     };
 
-    return (<SliderImagesContainer>
+    useEffect(()=>{
+        const toggle = setInterval(() => {
+            setCurrentIndex(currentIndex === slides.length - 1 ? 0 : currentIndex + 1);
+        }, 3000);
+        return () => clearInterval(toggle);
+    },[currentIndex]);
+
+
+
+    return (
+        <SliderImagesContainer>
             <ImagesContainer>
                 <BiLeftArrow onClick={goToPrevious}/>
                 <BiRightArrow onClick={goToNext}/>
