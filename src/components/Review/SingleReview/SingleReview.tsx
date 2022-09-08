@@ -22,18 +22,17 @@ interface Props {
 }
 
 export const SingleReview = ({reviews}: Props) => {
-    const {userInfo: {isAdmin}}: UserLoginResponse = useSelector((state: RootState) => state.userLogin);
-    const {userInfo: {token}} = useSelector((store: RootState) => store.userLogin);
+    const {userInfo}: UserLoginResponse = useSelector((state: RootState) => state.userLogin) ;
     const [errorMessage, setErrorMessage] = useState('');
     const {id} = useParams()
     const dispatch = useDispatch();
 
     const handleRemoveComment = async ({_id, user, rating}: reviewType) => {
         try {
-             await api.put(`reviews/${id}`, {productId: user, review_id: _id, rating}, {
+            await api.put(`reviews/${id}`, {productId: user, review_id: _id, rating}, {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token} `,
+                    Authorization: `Bearer ${userInfo.token} `,
                 },
             })
             // @ts-ignore
@@ -43,7 +42,9 @@ export const SingleReview = ({reviews}: Props) => {
         }
     };
 
-    useEffect(() => {}, [dispatch]);
+    useEffect(() => {
+    }, [dispatch]);
+
 
     return (
         <ShowsReviewSection>
@@ -63,10 +64,12 @@ export const SingleReview = ({reviews}: Props) => {
                                 numberOfStars={5}
                                 name="rating"/>
                             {review.comment && <p>{review.comment}</p>}
-                            {isAdmin && <Button text="usuń komentarz" onClick={() => handleRemoveComment(review)}/>}
+                            {userInfo?.isAdmin && <Button text="usuń komentarz" onClick={() => handleRemoveComment(review)}/>}
                         </div>
                     ))
                 )}
+
+
         </ShowsReviewSection>
     )
 }
