@@ -53,7 +53,8 @@ export const DetailsContainer = styled(ColumnContainer)`
   }
 
   & p {
-    padding: 10px;
+    padding: 15px;
+    background-color: ${appColors.secondary};
   }
 `
 
@@ -73,7 +74,6 @@ export const StockDetails = styled(ColumnContainer) `
   padding: 10px;
   border-radius: 10px;
   background-color: ${appColors.dimWhite};
-  border: 1px solid ${appColors.grandpaOrange};
   text-align: center;
   
   & :last-of-type p {

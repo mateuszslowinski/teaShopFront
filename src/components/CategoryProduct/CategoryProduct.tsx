@@ -7,11 +7,11 @@ import {
     CategoryProductContainer,
     ContentContainer,
     DescriptionContainer,
-    ProductsContainer
 } from "./CategoryProduct.styles";
 import {Pagination} from "../../Commons/Pagination/Pagination";
 import {Message} from "../../Commons/Message/Message";
 import {categoryProductDesc} from "../../constants/descriptions/categoryProduct.descriptions";
+import {RowContainer} from "../../constants/Layouts/FlexDirection.styles";
 
 export const CategoryProduct = () => {
     const [products, setProducts] = useState([])
@@ -42,15 +42,14 @@ export const CategoryProduct = () => {
                 <p>{productDesc?.text}</p>
             </DescriptionContainer>
 
-
             {products.length === 0 ? <Message text='Brak produktów'/> : (
                 <ContentContainer>
                     <p>Nasze produkty z kategorii {name}</p>
-                    <ProductsContainer>
+                    <RowContainer>
                         {products.slice(pagesVisited, pagesVisited + productsPerPage).map((product: ProductTypes) => (
                             <SingleProductCard key={product._id} product={product}/>
                         ))}
-                    </ProductsContainer>
+                    </RowContainer>
                 </ContentContainer>
             )}
 

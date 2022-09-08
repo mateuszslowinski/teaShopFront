@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { RowContainer} from "../../constants/Layouts/FlexDirection.styles";
+import {ColumnContainer} from "../../constants/Layouts/FlexDirection.styles";
 import {appColors} from "../../constants/appColoros";
 
 
-export const ProductsSectionContainer = styled(RowContainer)`
-  margin-bottom: 20px;
-  width: 100%;
-
+export const ProductsContainer = styled(ColumnContainer)`
+  min-height: calc(100vh - 154px);
+  padding: 0 10px ;
+  justify-content: space-between;
   
   & h1 {
     width: 100%;
@@ -16,4 +16,13 @@ export const ProductsSectionContainer = styled(RowContainer)`
     background-color: transparent;
     color: ${appColors.primary};
   }
+`
+
+export const ProductsSectionContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background-color: transparent;
+  margin-bottom: 20px;
+  width: 100%;
 `

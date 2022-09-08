@@ -6,9 +6,9 @@ export const HomeContainer = styled(ColumnContainer)`
 
   & span {
     align-self: flex-start;
-    background-color: transparent;
-    padding: 10px;
-    margin: 30px 10px 0;
+    background-color: ${appColors.secondary};
+    padding: 20px;
+    margin: 30px 20px 10px;
 
     & p {
       color: ${appColors.primary};

@@ -31,7 +31,7 @@ export const ImagesSlider = ({slides}: Props) => {
     useEffect(()=>{
         const toggle = setInterval(() => {
             setCurrentIndex(currentIndex === slides.length - 1 ? 0 : currentIndex + 1);
-        }, 3000);
+        }, 6000);
         return () => clearInterval(toggle);
     },[currentIndex]);
 
