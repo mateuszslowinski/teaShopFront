@@ -43,19 +43,16 @@ export const Header = () => {
                     <AiOutlineArrowDown/>
                     {isOpen && (
                         <div>
-
-                            {
-                                CategorySelectOptions.map(link => (
+                            {CategorySelectOptions.map(link => (
                                     <li>
                                         <LinkMenu to={`kategoria/${link.value}`}>{link.text}</LinkMenu>
                                     </li>
-                                ))
-                            }
+                                ))}
                         </div>
-
-                    )
-                    }
-
+                    )}
+                </li>
+                <li>
+                    <LinkMenu to="/produkty/nowosci">Nowości</LinkMenu>
                 </li>
             </ul>
             <div>
