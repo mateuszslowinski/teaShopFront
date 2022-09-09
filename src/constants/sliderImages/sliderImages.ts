@@ -1,7 +1,7 @@
 export const ImagesForHomeSlides = [
     {
         image:'../images/home/1.jpg',
-        url:'/nowosci',
+        url:'/produkty/nowosci',
         title:'Nowości jesień 2022'
     },
     {

@@ -24,6 +24,7 @@ import {SearchPage} from "./pages/Search.page";
 import {UserProtectedRoutes} from "./utils/UserProtectedRoutes";
 import {Footer} from "./components/Footer/Footer";
 import {CategoryProductPage} from "./pages/CategoryProduct.page";
+import {NewProductsPage} from "./pages/NewProductsPage/NewProducts.page";
 
 export const App = () => {
 
@@ -52,6 +53,7 @@ export const App = () => {
             <Route path='/zaloguj' element={<LoginPage/>}/>
             <Route path="/rejestracja" element={<RegisterPage/>}/>
             <Route path='/produkty' element={<ProductsPage/>}/>
+            <Route path='/produkty/nowosci' element={<NewProductsPage/>}/>
             <Route path='/produkty/:id' element={<SingleProductsPage/>}/>
             <Route path='/kategoria/:name' element={<CategoryProductPage/>}/>
             <Route path='/wyszukaj/:term' element={<SearchPage/>}/>
