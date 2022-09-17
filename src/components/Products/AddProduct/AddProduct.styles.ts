@@ -17,18 +17,19 @@ export const AddProductForm = styled.form`
   border-radius: 10px;
   background-color: ${appColors.dimBlue};
 
-  & img{
+  & img {
     width: 80px;
     height: 80px;
   }
-  
-  & select, option,textarea,input,p,h2 {
+
+  & select, option, textarea, input, p, h2 {
     background-color: ${appColors.grandpaOrange};
     font-size: 1.4rem;
     color: ${appColors.primary};
     padding: 5px;
   }
-  & h2{
+
+  & h2 {
     text-align: center;
     background-color: transparent;
     font-size: 2.2rem;
@@ -44,7 +45,7 @@ export const AddProductForm = styled.form`
       background-color: rgb(256, 256, 256);
     }
   }
-  
+
   & div {
     background-color: transparent;
     margin: 5px;
@@ -69,6 +70,9 @@ export const ErrorMessage = styled.div`
 
 export const MessageContainer = styled(ColumnContainer)`
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: lightgreen;
   border-radius: 10px;
   text-align: center;
@@ -80,5 +84,5 @@ export const MessageContainer = styled(ColumnContainer)`
     color: ${appColors.primary};
   }
 
-  
+
 `
