@@ -26,8 +26,12 @@ export const ProductCardContainer = styled(ColumnContainer)`
   & h2 {
     margin: 5px;
     font-size: 1.8rem;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
-  
+
   & span {
     padding: 0;
     margin: 0 0 0 10px;
