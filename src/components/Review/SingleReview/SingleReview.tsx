@@ -14,6 +14,7 @@ import {api} from "../../../utils/axios";
 import {useParams} from "react-router";
 import {getOneProduct} from "../../../redux/actions/product.actions";
 import {ErrorMessage} from "../../Products/AddProduct/AddProduct.styles";
+import {useNavigate} from "react-router-dom";
 
 moment.locale('pl')
 
@@ -22,9 +23,10 @@ interface Props {
 }
 
 export const SingleReview = ({reviews}: Props) => {
-    const {userInfo}: UserLoginResponse = useSelector((state: RootState) => state.userLogin) ;
+    const {userInfo}: UserLoginResponse = useSelector((state: RootState) => state.userLogin);
     const [errorMessage, setErrorMessage] = useState('');
-    const {id} = useParams()
+    const {id} = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleRemoveComment = async ({_id, user, rating}: reviewType) => {
@@ -37,6 +39,7 @@ export const SingleReview = ({reviews}: Props) => {
             })
             // @ts-ignore
             dispatch(getOneProduct(id))
+            navigate(0)
         } catch (e) {
             setErrorMessage((e as Error).message)
         }
@@ -64,7 +67,8 @@ export const SingleReview = ({reviews}: Props) => {
                                 numberOfStars={5}
                                 name="rating"/>
                             {review.comment && <p>{review.comment}</p>}
-                            {userInfo?.isAdmin && <Button text="usuń komentarz" onClick={() => handleRemoveComment(review)}/>}
+                            {userInfo?.isAdmin &&
+                                <Button text="usuń komentarz" onClick={() => handleRemoveComment(review)}/>}
                         </div>
                     ))
                 )}
