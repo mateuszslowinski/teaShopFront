@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {createProductReview} from "../../redux/actions/product.actions";
@@ -20,13 +20,20 @@ type ReviewForm = {
 export const ReviewSection = () => {
     const {loading, product}: ProductResponseType = useSelector((store: RootState) => store.productDetails);
     const {userInfo}: UserLoginResponse = useSelector((store: RootState) => store.userLogin);
+    const {success} = useSelector((state: RootState) => state.productReview);
     const {reviews} = product;
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [form, setForm] = useState<ReviewForm>({
         rating: 1,
         comment: "",
-    })
+    });
+
+    useEffect(() => {
+        if (success) {
+            navigate(0)
+        }
+    }, [dispatch, success])
 
     const {
         register,
@@ -46,7 +53,6 @@ export const ReviewSection = () => {
     const onSubmit = () => {
         // @ts-ignore
         dispatch(createProductReview(product._id, form))
-        navigate(0)
     }
 
     return (
