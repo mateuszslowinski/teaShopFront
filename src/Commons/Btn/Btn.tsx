@@ -1,5 +1,5 @@
 import React from "react";
-import {PrimaryButton} from './Button.styles';
+import {PrimaryButton} from './Btn.styles';
 
 
 interface Props {
@@ -9,6 +9,6 @@ interface Props {
 }
 
 
-export const Button = ({text, onClick,disabled}: Props) => (
+export const Btn = ({text, onClick,disabled}: Props) => (
     <PrimaryButton onClick={onClick} disabled={disabled}>{text}</PrimaryButton>
 )

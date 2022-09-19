@@ -3,7 +3,7 @@ import {NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {logout} from "../../redux/actions/user.actions";
-import {Button} from "../../Commons/Button/Button";
+import {Btn} from "../../Commons/Btn/Btn";
 import {RowContainer} from "../../constants/Layouts/FlexDirection.styles";
 import {BasketIcon, HeaderContainer, LinkMenu} from "./Header.style";
 import {UserLoginResponse} from "../../types/user.type";
@@ -63,7 +63,7 @@ export const Header = () => {
                         required
                         onChange={e => setTerm(e.target.value)}
                     />
-                    <Button
+                    <Btn
                         text="szukaj"
                     />
                 </form>
@@ -71,14 +71,14 @@ export const Header = () => {
             <RowContainer>
                 {userInfo ? (
                     <>
-                        <NavLink to='/konto'><Button text='Moje konto'/></NavLink>
-                        <Button text='Wyloguj' onClick={handleLogout}/>
+                        <NavLink to='/konto'><Btn text='Moje konto'/></NavLink>
+                        <Btn text='Wyloguj' onClick={handleLogout}/>
                         <NavLink to='/koszyk'><BasketIcon/></NavLink>
                     </>
                 ) : (
                     <>
-                        <NavLink to='/rejestracja'><Button text="Rejestracja"/></NavLink>
-                        <NavLink to='/zaloguj'><Button text="Logowanie"/> </NavLink>
+                        <NavLink to='/rejestracja'><Btn text="Rejestracja"/></NavLink>
+                        <NavLink to='/zaloguj'><Btn text="Logowanie"/> </NavLink>
                     </>
                 )}
             </RowContainer>

@@ -3,7 +3,7 @@ import {RootState} from "../../../redux/store";
 import {useEffect, useState} from "react";
 import {getListProducts} from "../../../redux/actions/product.actions";
 import {AllProductListContainer, MessageContainer, SingleProductContainer} from "./AllProductList.styles";
-import {Button} from "../../../Commons/Button/Button";
+import {Btn} from "../../../Commons/Btn/Btn";
 import {NavLink} from "react-router-dom";
 import {api} from "../../../utils/axios";
 
@@ -50,15 +50,15 @@ export const AllProductList = () => {
             {isOpen &&
                 <MessageContainer>
                     <p>Czy napewno chcesz usunąc ten produkt?</p>
-                    <Button text='tak' onClick={handleConfirmProductClick}/>
-                    <Button text='nie' onClick={() => setIsOpen(false)}/>
+                    <Btn text='tak' onClick={handleConfirmProductClick}/>
+                    <Btn text='nie' onClick={() => setIsOpen(false)}/>
                 </MessageContainer>}
             {products.map(product => (
                 <SingleProductContainer>
                     <h3> {product.name}</h3>
-                    <Button text="usuń" onClick={() => handleRemoveProductClick(product._id)}/>
-                    <NavLink to={`/admin/produkty/edytuj/${product._id}`}><Button text="edytuj"/></NavLink>
-                    <NavLink to={`/produkty/${product._id}`}><Button text="szczegóły"/></NavLink>
+                    <Btn text="usuń" onClick={() => handleRemoveProductClick(product._id)}/>
+                    <NavLink to={`/admin/produkty/edytuj/${product._id}`}><Btn text="edytuj"/></NavLink>
+                    <NavLink to={`/produkty/${product._id}`}><Btn text="szczegóły"/></NavLink>
                 </SingleProductContainer>
             ))}
         </AllProductListContainer>

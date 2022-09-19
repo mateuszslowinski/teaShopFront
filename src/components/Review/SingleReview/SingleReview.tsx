@@ -5,7 +5,7 @@ import 'moment/locale/pl'
 import {ReviewProductType} from "../../../types/product.types";
 import {appColors} from "../../../constants/appColoros";
 import {ShowsReviewSection} from "./SingleReview.styles";
-import {Button} from "../../../Commons/Button/Button";
+import {Btn} from "../../../Commons/Btn/Btn";
 import {UserLoginResponse} from "../../../types/user.type";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
@@ -68,7 +68,7 @@ export const SingleReview = ({reviews}: Props) => {
                                 name="rating"/>
                             {review.comment && <p>{review.comment}</p>}
                             {userInfo?.isAdmin &&
-                                <Button text="usuń komentarz" onClick={() => handleRemoveComment(review)}/>}
+                                <Btn text="usuń komentarz" onClick={() => handleRemoveComment(review)}/>}
                         </div>
                     ))
                 )}

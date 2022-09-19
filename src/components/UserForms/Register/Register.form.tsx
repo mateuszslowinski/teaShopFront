@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {FormRegister, RegisterContainer} from "./Register.styles";
 import {emailValidate} from "../../../constants/Form/validation.patterns";
-import {Button} from "../../../Commons/Button/Button";
+import {Btn} from "../../../Commons/Btn/Btn";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import {api} from "../../../utils/axios";
@@ -91,7 +91,7 @@ export const RegisterForm = () => {
                     placeholder="Hasło..."
                 />
                 {password && <div>{password.message}</div>}
-                <Button text="Zarejestruj"/>
+                <Btn text="Zarejestruj"/>
             </FormRegister>
         </RegisterContainer>
     )

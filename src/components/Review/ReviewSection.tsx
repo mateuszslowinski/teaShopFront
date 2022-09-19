@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {createProductReview} from "../../redux/actions/product.actions";
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {SingleReview} from "./SingleReview/SingleReview";
-import {Button} from "../../Commons/Button/Button";
+import {Btn} from "../../Commons/Btn/Btn";
 import {LoadingSpinner} from "../../Commons/LoadingSpinner/LoadingSpinner";
 import {RatingSelectOptions} from "../../constants/Form/ratingSelectOptions";
 import {ProductResponseType} from "../../types/product.types";
@@ -20,13 +20,20 @@ type ReviewForm = {
 export const ReviewSection = () => {
     const {loading, product}: ProductResponseType = useSelector((store: RootState) => store.productDetails);
     const {userInfo}: UserLoginResponse = useSelector((store: RootState) => store.userLogin);
+    const {success} = useSelector((state: RootState) => state.productReview);
     const {reviews} = product;
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [form, setForm] = useState<ReviewForm>({
         rating: 1,
         comment: "",
-    })
+    });
+
+    useEffect(() => {
+        if (success) {
+            navigate(0)
+        }
+    }, [dispatch, success])
 
     const {
         register,
@@ -46,7 +53,6 @@ export const ReviewSection = () => {
     const onSubmit = () => {
         // @ts-ignore
         dispatch(createProductReview(product._id, form))
-        navigate(0)
     }
 
     return (
@@ -83,8 +89,8 @@ export const ReviewSection = () => {
                                     onChange={e => updateForm('comment', e.target.value)}
                                 />
 
-                                 {userInfo && userInfo ? <Button text='Wyślij recenzję'/> :
-                                    <Button text="Musi się zalogować" disabled/>}
+                                 {userInfo && userInfo ? <Btn text='Wyślij recenzję'/> :
+                                    <Btn text="Musi się zalogować" disabled/>}
                             </WriteReviewForm>
                         )
                     }

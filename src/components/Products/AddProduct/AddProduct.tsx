@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import {api} from '../../../utils/axios';
-import {Button} from '../../../Commons/Button/Button';
+import {Btn} from '../../../Commons/Btn/Btn';
 import {CategorySelectOptions} from "../../../constants/Form/categorySelectOptions";
 import {AddProductContainer, AddProductForm, ErrorMessage, MessageContainer} from "./AddProduct.styles";
 import {useSelector} from "react-redux";
@@ -124,7 +124,7 @@ export const AddProduct = () => {
                         placeholder='Dostępna ilość'/>
                     {countInStock && <ErrorMessage>{countInStock.message}</ErrorMessage>}
                 </div>
-                <Button text='dodaj produkt'/>
+                <Btn text='dodaj produkt'/>
             </AddProductForm>
         </AddProductContainer>
 

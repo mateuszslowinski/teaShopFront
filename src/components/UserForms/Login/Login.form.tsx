@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form'
 import {login} from "../../../redux/actions/user.actions";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
-import {Button} from "../../../Commons/Button/Button";
+import {Btn} from "../../../Commons/Btn/Btn";
 import {FormLogin, LoginContainer} from "./Login.styles";
 import {emailValidate} from "../../../constants/Form/validation.patterns";
 import {UserLoginResponse} from "../../../types/user.type";
@@ -64,7 +64,7 @@ export const LoginForm = () => {
                     placeholder="Hasło..."
                 />
                 {password && <div>{password.message}</div>}
-                <Button text="Zaloguj"/>
+                <Btn text="Zaloguj"/>
                 <NavLink to='/rejestracja'>Nie masz konta? Założ je</NavLink>
             </FormLogin>
         </LoginContainer>
