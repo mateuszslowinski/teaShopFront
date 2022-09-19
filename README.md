@@ -19,4 +19,6 @@ No-admin user can search product by product name. Can write review and rating an
 products and see history of made orders with details. The amount of ordered product will be subtracted in backend.On 
 page user can also sign for newsletter. On his email will be send email his information.
 
+### LIVE DEMO
+https://tea-shop-front.herokuapp.com/
 
