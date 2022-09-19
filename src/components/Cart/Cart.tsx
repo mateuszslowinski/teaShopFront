@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {useEffect} from "react";
 import {CartContainer, DetailsProduct, DetailsProductContainer, ImgProduct, Order} from "./Cart.styles";
-import {Button} from "../../Commons/Button/Button";
+import {Btn} from "../../Commons/Btn/Btn";
 import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart, removeFromCart} from "../../redux/actions/cart.actions";
@@ -68,7 +68,7 @@ export const Cart = () => {
                                         </select>
                                     </div>
                                     <div>
-                                        <Button text='Usuń' onClick={() => removeItemFromBasket(product._id)}/>
+                                        <Btn text='Usuń' onClick={() => removeItemFromBasket(product._id)}/>
                                         <p>{(product.quantity * product.price).toFixed(2)} PLN</p>
                                     </div>
                                 </DetailsProduct>
@@ -88,8 +88,8 @@ export const Cart = () => {
                                 <h4>Wartość do zapłaty: </h4>
                                 <p>{totalPrice} PLN</p>
                             </div>
-                            <NavLink to='/adres'><Button text='Przejdź do kasy'/></NavLink>
-                            <NavLink to='/produkty'><Button text="Wróc do zakupów"/></NavLink>
+                            <NavLink to='/adres'><Btn text='Przejdź do kasy'/></NavLink>
+                            <NavLink to='/produkty'><Btn text="Wróc do zakupów"/></NavLink>
                         </Order>
                     </>
                 )}

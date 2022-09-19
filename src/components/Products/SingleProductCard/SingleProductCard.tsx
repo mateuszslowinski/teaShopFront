@@ -1,6 +1,6 @@
 import React from 'react'
 import StarRatings from "react-star-ratings";
-import {Button} from '../../../Commons/Button/Button';
+import {Btn} from '../../../Commons/Btn/Btn';
 import {appColors} from "../../../constants/appColoros";
 import {ProductTypes} from "../../../types/product.types";
 import {ImgProduct, ProductCardContainer} from "./SingleProductCard.styles";
@@ -33,7 +33,7 @@ export const SingleProductCard = ({product}: Props) => {
             </div>
             <div>
                 <p>{price} PLN</p>
-                <NavLink to={`/produkty/${_id}`}><Button text="szczegóły"/></NavLink>
+                <NavLink to={`/produkty/${_id}`}><Btn text="szczegóły"/></NavLink>
             </div>
         </ProductCardContainer>
     )

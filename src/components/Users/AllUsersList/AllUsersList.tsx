@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {api} from '../../../utils/axios';
 import {RootState} from "../../../redux/store";
-import {Button} from "../../../Commons/Button/Button";
+import {Btn} from "../../../Commons/Btn/Btn";
 import {LoadingSpinner} from "../../../Commons/LoadingSpinner/LoadingSpinner";
 import {UserType} from "../../../types/user.type";
 import {AllUsersListContainer, SingleUserContainer, MessageContainer} from "./AllUsersList.styles";
@@ -59,14 +59,14 @@ export const AllUsersList = () => {
             {isOpen &&
                 <MessageContainer>
                     <p>Czy napewno chcesz usunąc tego uzytkownika?</p>
-                    <Button text='tak' onClick={handleConfirmUserClick}/>
-                    <Button text='nie' onClick={() => setIsOpen(false)}/>
+                    <Btn text='tak' onClick={handleConfirmUserClick}/>
+                    <Btn text='nie' onClick={() => setIsOpen(false)}/>
                 </MessageContainer>}
             {users.map((user) => (
                 <SingleUserContainer>
                     <p>{user.username}</p>
                     <p>{user.email}</p>
-                    {!user.isAdmin && <Button text="usuń" onClick={() => handleRemoveUserClick(user._id)}/>}
+                    {!user.isAdmin && <Btn text="usuń" onClick={() => handleRemoveUserClick(user._id)}/>}
                 </SingleUserContainer>
             ))}
         </AllUsersListContainer>

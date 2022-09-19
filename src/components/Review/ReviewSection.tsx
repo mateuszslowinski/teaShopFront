@@ -5,7 +5,7 @@ import {createProductReview} from "../../redux/actions/product.actions";
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {SingleReview} from "./SingleReview/SingleReview";
-import {Button} from "../../Commons/Button/Button";
+import {Btn} from "../../Commons/Btn/Btn";
 import {LoadingSpinner} from "../../Commons/LoadingSpinner/LoadingSpinner";
 import {RatingSelectOptions} from "../../constants/Form/ratingSelectOptions";
 import {ProductResponseType} from "../../types/product.types";
@@ -83,8 +83,8 @@ export const ReviewSection = () => {
                                     onChange={e => updateForm('comment', e.target.value)}
                                 />
 
-                                 {userInfo && userInfo ? <Button text='Wyślij recenzję'/> :
-                                    <Button text="Musi się zalogować" disabled/>}
+                                 {userInfo && userInfo ? <Btn text='Wyślij recenzję'/> :
+                                    <Btn text="Musi się zalogować" disabled/>}
                             </WriteReviewForm>
                         )
                     }

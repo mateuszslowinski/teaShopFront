@@ -1,7 +1,7 @@
 import React, {ChangeEvent,  useState} from "react";
 import {AddProductForm, ErrorMessage, MessageContainer} from "../AddProduct/AddProduct.styles";
 import {CategorySelectOptions} from "../../../constants/Form/categorySelectOptions";
-import {Button} from "../../../Commons/Button/Button";
+import {Btn} from "../../../Commons/Btn/Btn";
 import {useForm} from "react-hook-form";
 import {ProductTypes} from "../../../types/product.types";
 import {api} from "../../../utils/axios";
@@ -177,7 +177,7 @@ export const EditProduct = ({product}: Props) => {
                     />
                     {countInStock && <ErrorMessage>{countInStock.message}</ErrorMessage>}
                 </div>
-                <Button text='Edytuj produkt'/>
+                <Btn text='Edytuj produkt'/>
             </AddProductForm>
         </>
     )

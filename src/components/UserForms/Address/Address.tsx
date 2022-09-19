@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {addDeliveryAddress} from "../../../redux/actions/cart.actions";
 import {RootState} from "../../../redux/store";
-import {Button} from "../../../Commons/Button/Button";
+import {Btn} from "../../../Commons/Btn/Btn";
 import {ConfirmOrder} from "../../Orders/ConfirmOrder/ConfirmOrder";
 import {DeliveryType, DeliveryTypeResponse} from "../../../types/cart.types";
 import {ErrorMessage, FormContainer} from "./Address.styles";
@@ -88,7 +88,7 @@ export const Address = () => {
                 />
                 {city && <ErrorMessage>{city.message}</ErrorMessage>}
             </label>
-            <Button text="Potwierdź"/>
+            <Btn text="Potwierdź"/>
         </FormContainer>
     )
 }

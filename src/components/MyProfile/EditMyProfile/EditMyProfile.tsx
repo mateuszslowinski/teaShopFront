@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
 import {EditMyProfileContainer, MessageContainer} from "./EditMyProfile.styles";
-import {Button} from "../../../Commons/Button/Button";
+import {Btn} from "../../../Commons/Btn/Btn";
 import {useForm} from "react-hook-form";
 import {emailValidate} from "../../../constants/Form/validation.patterns";
 import {UpdateProfileResponse, UserDetailsResponse} from "../../../types/user.type";
@@ -120,7 +120,7 @@ export const EditMyProfile = () => {
                         value={form.confirmPassword}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm('confirmPassword', e.target.value)}
                     />
-                    <Button text='edytuj'/>
+                    <Btn text='edytuj'/>
                 </form>
             </EditMyProfileContainer>
         </>

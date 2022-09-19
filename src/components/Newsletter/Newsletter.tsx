@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {Button} from "../../Commons/Button/Button";
+import {Btn} from "../../Commons/Btn/Btn";
 import {ConfirmMessage, ErrorMessage, SendEmailContainer} from "./Newsletter.styles";
 import {useForm} from "react-hook-form";
 import {emailValidate} from "../../constants/Form/validation.patterns";
@@ -44,7 +44,7 @@ export const Newsletter = () => {
             {openMessage &&
                 <ConfirmMessage>
                     <p>Dziękujemy za zapisanie się do naszego newslletera!</p>
-                    <Button text="potwierdzam" onClick={() => setOpenMessage(!openMessage)}/>
+                    <Btn text="potwierdzam" onClick={() => setOpenMessage(!openMessage)}/>
                 </ConfirmMessage>
             }
 
@@ -63,10 +63,10 @@ export const Newsletter = () => {
                 />
                 {errorMessage && <ErrorMessage>
                     <p>{errorMessage}</p>
-                    <Button text='ok' onClick={() => setErrorMessage(null)}/>
+                    <Btn text='ok' onClick={() => setErrorMessage(null)}/>
                 </ErrorMessage>}
                 {email && <ErrorMessage><p>{email.message}</p></ErrorMessage>}
-                <Button text="wyślij"/>
+                <Btn text="wyślij"/>
             </form>
         </SendEmailContainer>
     )

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Button} from "../../../Commons/Button/Button";
+import {Btn} from "../../../Commons/Btn/Btn";
 import {OrderContainer, OrderHistoryContainer} from "./OrderHistory.styles";
 import {api} from "../../../utils/axios";
 import {useSelector} from "react-redux";
@@ -51,7 +51,7 @@ export const OrderHistory = () => {
                             <span>Wartość zamówienia:</span>
                             <p>{order.price} PLN</p>
                         </div>
-                        <NavLink to={`/konto/zamowienia/${order._id}`}><Button text='szczegóły'/></NavLink>
+                        <NavLink to={`/konto/zamowienia/${order._id}`}><Btn text='szczegóły'/></NavLink>
                     </OrderContainer>
                 ))
             )}

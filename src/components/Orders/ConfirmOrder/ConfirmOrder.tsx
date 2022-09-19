@@ -9,7 +9,7 @@ import {
 } from "./ConfirmOrder.styles";
 import {RootState} from "../../../redux/store";
 import {DeliveryTypeResponse} from "../../../types/cart.types";
-import {Button} from '../../../Commons/Button/Button';
+import {Btn} from '../../../Commons/Btn/Btn';
 import {DELIVER_PRICE} from "../../Cart/Cart";
 import {createOrder} from "../../../redux/actions/order.actions";
 import {useNavigate} from "react-router-dom";
@@ -81,7 +81,7 @@ export const ConfirmOrder = () => {
                                 <span>Do zapłaty:</span>
                                 <p>{totalPrice}PLN</p>
                             </div>
-                            <Button text='zamawiam' onClick={handleOrderConfirmClick}/>
+                            <Btn text='zamawiam' onClick={handleOrderConfirmClick}/>
                         </UserDetailsContainer>
                     </OrderContainer>
             ) }

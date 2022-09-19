@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {DetailsContainer, ImgProduct, ProductDetailsContainer, RowDetails, StockDetails} from "./SingleProducts.styles";
 import {useParams} from 'react-router';
-import {Button} from '../../Commons/Button/Button';
+import {Btn} from '../../Commons/Btn/Btn';
 import {NavLink} from "react-router-dom";
 import {LoadingSpinner} from "../../Commons/LoadingSpinner/LoadingSpinner";
 import {ReviewSection} from "../Review/ReviewSection";
@@ -60,7 +60,7 @@ export const SingleProducts = () => {
                                                 </option>)
                                             )}
                                         </select>
-                                        <NavLink to={`/koszyk/${id}?qty=${quantity}`}><Button
+                                        <NavLink to={`/koszyk/${id}?qty=${quantity}`}><Btn
                                             text="dodaj do koszyka"/></NavLink>
                                     </>
                                 ) : (
