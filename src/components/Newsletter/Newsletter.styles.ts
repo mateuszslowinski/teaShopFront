@@ -4,6 +4,7 @@ import {appColors} from "../../constants/appColoros";
 
 export const SendEmailContainer = styled(RowContainer)`
   width: 100%;
+  position: relative;
   background-color: ${appColors.iceCold};
   border-top: 1px solid ${appColors.primary};
   border-bottom: 1px solid ${appColors.primary};
@@ -30,7 +31,7 @@ export const SendEmailContainer = styled(RowContainer)`
 
 export const ConfirmMessage = styled(ColumnContainer)`
   position: absolute;
-  bottom: 20%;
+  bottom: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px;
