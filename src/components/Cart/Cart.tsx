@@ -34,7 +34,6 @@ export const Cart = () => {
         }
     }, [dispatch, id, quantity])
 
-
     return (
         <CartContainer>
             {cartItems.length === 0 ? <Message text='Brak produktów w koszyku'/>

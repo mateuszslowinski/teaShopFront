@@ -9,6 +9,8 @@ The goal is extended programing skills and learn new technology.
 - Redux
 - Styled Components
 
+### Live Demo
+https://tea-shop-front.herokuapp.com
 
 ### About application
 Application has registration and login option for user. There is two type of user role, for admin and no admin role. 
